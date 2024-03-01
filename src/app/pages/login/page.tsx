@@ -76,7 +76,7 @@ const Login = () => {
                 marginBottom: 5,
               }}
             >
-              HUYỆN ỦY KRÔNG PẮC
+              HUYỆN ỦY KRÔNG ANA
             </div>
           </div>
           <div id="login_box" className="loginBox">
@@ -171,13 +171,13 @@ const Login = () => {
           <div className="Group-1 fGroup">
             <div>
               <strong>Cơ quan chủ quản:</strong>
-              <span> Văn phòng Huyện ủy Krông Pắc</span>
+              <span> Văn phòng Huyện ủy Krông Ana</span>
             </div>
             <div>
               <strong>Địa chỉ:</strong>
               <span>
                 {" "}
-                305, Giải Phóng, TT. Phước An, huyện Krông Pắc, tỉnh Đắk Lắk
+                305, Giải Phóng, TT. Phước An, huyện Krông Ana, tỉnh Đắk Lắk
               </span>
             </div>
             <div>
@@ -188,7 +188,7 @@ const Login = () => {
           <div className="Group-2 fGroup">
             <div>
               <strong>Đơn vị quản lý:</strong>
-              <span> Huyện ủy Krông Pắc</span>
+              <span> Huyện ủy Krông Ana</span>
             </div>
             <div>
               <strong>Điện thoại:</strong>
@@ -197,7 +197,7 @@ const Login = () => {
           </div>
           <div className="Group-3 fGroup">
             <div>
-              <strong>Bản quyền © 2023 Văn phòng Huyện ủy Krông Pắk</strong>
+              <strong>Bản quyền © 2023 Văn phòng Huyện ủy Krông Ana</strong>
             </div>
             <div>
               <strong>Thiết kế và phát triển:</strong> Công ty Công nghệ

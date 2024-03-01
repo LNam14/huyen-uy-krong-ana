@@ -19,20 +19,20 @@ const Dashboard = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="DESCRIPTION"
-          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮK"
+          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA"
         />
         <meta
           name="KEYWORDS"
-          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮK"
+          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA"
         />
-        <meta name="AUTHOR" content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮK" />
+        <meta name="AUTHOR" content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA" />
         <meta
           name="keywords"
-          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮK"
+          content="CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA"
         />
         <meta name="msapplication-TileImage" />
         <meta name="msapplication-TileColor" content="#0072C6" />
-        <title>CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮK</title>
+        <title>CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA</title>
         <link
           rel="shortcut icon"
           href="./filesx/favicon.ico"
@@ -848,7 +848,7 @@ const Dashboard = () => {
                               <img alt="" src="./filesx/logo.gif" />
                               <img
                                 alt=""
-                                src="./filesx/logo2.png"
+                                src="./images/logo/logo1.png"
                                 width={"60%"}
                               />
                             </a>
@@ -1298,8 +1298,10 @@ const Dashboard = () => {
                             pauseOnHover
                             speed={40}
                           >
-                            Chào mừng quý vị đến với &nbsp; Cổng thông tin điện
-                            tử Huyện Ủy Krông Pắk ! &nbsp; &nbsp; &nbsp; &nbsp;
+                            Chào mừng quý vị đến với &nbsp;
+                            <strong>
+                              Cổng thông tin điện tử Huyện Ủy Krông Ana!
+                            </strong>
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -1308,8 +1310,8 @@ const Dashboard = () => {
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                            &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                           </Marquee>
                         </div>
                         <div
@@ -1346,7 +1348,7 @@ const Dashboard = () => {
                                               <div className="div-img">
                                                 <img
                                                   className="Container-Image"
-                                                  src="./filesx/TS-nhiemvu-23-1.jpg"
+                                                  src="./filesx/ubnd.jpg"
                                                   style={{ opacity: 1 }}
                                                 />
                                                 &nbsp;
@@ -1356,7 +1358,7 @@ const Dashboard = () => {
                                                   Triển khai, thống nhất nội
                                                   dung, chương trình tổ chức Hội
                                                   thi Bí thư Chi bộ giỏi huyện
-                                                  Krông Pắc năm...
+                                                  Krông Ana năm...
                                                 </div>
                                               </a>
                                             </div>
@@ -1370,7 +1372,7 @@ const Dashboard = () => {
                                                     Triển khai, thống nhất nội
                                                     dung, chương trình tổ chức
                                                     Hội thi Bí thư Chi bộ giỏi
-                                                    huyện Krông Pắc năm...
+                                                    huyện Krông Ana năm...
                                                   </div>
                                                 </a>
                                               </div>
@@ -1405,7 +1407,7 @@ const Dashboard = () => {
                                             <div
                                               id="0"
                                               className="div-item selected"
-                                              title="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Pắc"
+                                              title="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Ana"
                                             >
                                               <li className="New-orders-li">
                                                 <a href="#">
@@ -1413,7 +1415,7 @@ const Dashboard = () => {
                                                   Đoàn đại biểu Quốc hội tỉnh
                                                   khóa XV tiếp xúc cử tri trước
                                                   kỳ họp thứ 5 tại huyện Krông
-                                                  Pắc
+                                                  Ana
                                                 </a>
                                               </li>
                                             </div>
@@ -1433,13 +1435,13 @@ const Dashboard = () => {
                                             <div
                                               id="2"
                                               className="div-item"
-                                              title="Khởi công nhà tình thương cho hộ nghèo tại xã Ea Yiêng"
+                                              title="Khởi công nhà tình thương cho hộ nghèo tại xã Băng Adrênh"
                                             >
                                               <li className="New-orders-li">
                                                 <a href="#">
                                                   <img src="./filesx/CP-xa-ThanhMyTay-ntm-2.jpg" />
                                                   Khởi công nhà tình thương cho
-                                                  hộ nghèo tại xã Ea Yiêng
+                                                  hộ nghèo tại xã Băng Adrênh
                                                 </a>
                                               </li>
                                             </div>
@@ -1460,7 +1462,7 @@ const Dashboard = () => {
                                             <div
                                               id="4"
                                               className="div-item"
-                                              title="Triển khai, thống nhất nội dung, chương trình tổ chức Hội thi Bí thư Chi bộ giỏi huyện Krông Pắc năm..."
+                                              title="Triển khai, thống nhất nội dung, chương trình tổ chức Hội thi Bí thư Chi bộ giỏi huyện Krông Ana năm..."
                                             >
                                               <li className="New-orders-li">
                                                 <a href="#">
@@ -1468,7 +1470,7 @@ const Dashboard = () => {
                                                   Triển khai, thống nhất nội
                                                   dung, chương trình tổ chức Hội
                                                   thi Bí thư Chi bộ giỏi huyện
-                                                  Krông Pắc năm...
+                                                  Krông Ana năm...
                                                 </a>
                                               </li>
                                             </div>
@@ -1514,9 +1516,9 @@ const Dashboard = () => {
                                                 _
                                                 <img
                                                   alt="Đẩy mạnh cải cách thủ tục hành chính gắn với chuyển đổi số, phục vụ người dân, doanh nghiệp"
-                                                  ng-src="./filesx/TT-tuongniem-nannhan-bachuc-4.jpg"
+                                                  ng-src="./filesx/truso.jpg"
                                                   className="img-responsive"
-                                                  src="./filesx/TT-tuongniem-nannhan-bachuc-4.jpg"
+                                                  src="./filesx/truso.jpg"
                                                 />
                                               </div>
                                               <div className="news-title">
@@ -1657,9 +1659,9 @@ const Dashboard = () => {
                                                 _
                                                 <img
                                                   alt="Tịnh Biên rực rỡ cờ hoa đón mừng ngày vui thành lập thị xã vùng biên"
-                                                  ng-src="./filesx/TB-chao-mung-thixa-1.jpg"
+                                                  ng-src="./filesx/ubnd.jpg"
                                                   className="img-responsive"
-                                                  src="./filesx/TB-chao-mung-thixa-1.jpg"
+                                                  src="./filesx/ubnd.jpg"
                                                 />
                                               </div>
                                               <div className="news-title">
@@ -1719,7 +1721,7 @@ const Dashboard = () => {
                                                         ng-bind="dataItem.Title"
                                                         className="ng-binding"
                                                       >
-                                                        Huyện Krông Pắc phát huy
+                                                        Huyện Krông Ana phát huy
                                                         Thế mạnh, tiềm năng kêu
                                                         gọi xúc tiến đầu tư
                                                       </span>
@@ -1839,7 +1841,7 @@ const Dashboard = () => {
                                                       ng-bind="dataItem.Title"
                                                       className="ng-binding"
                                                     >
-                                                      Trung ương Đoàn Krông Pắk
+                                                      Trung ương Đoàn Krông ANA
                                                       thực hiện các hoạt động an
                                                       sinh xã hội, chăm lo Tết
                                                     </a>
@@ -1889,7 +1891,7 @@ const Dashboard = () => {
                                                           className="ng-binding"
                                                         >
                                                           Uỷ Ban MTTQVN thị trấn
-                                                          Phước An Tổ chức bàn
+                                                          Buôn Trấp Tổ chức bàn
                                                           giao hai ngôi nhà đại
                                                           đoàn kết cho hộ nghèo.
                                                         </span>
@@ -1914,7 +1916,7 @@ const Dashboard = () => {
                                                           className="ng-binding"
                                                         >
                                                           Hội Nông dân Huyện
-                                                          Krông Pắc tặng quà cho
+                                                          Krông Ana tặng quà cho
                                                           Mẹ Việt Nam Anh hùng.
                                                         </span>
                                                         <span className="news-item-date ng-binding">
@@ -1966,8 +1968,8 @@ const Dashboard = () => {
                                                     <img
                                                       className="img-responsive"
                                                       alt="Thoại Sơn công tác dân vận luôn hướng về cơ sở "
-                                                      ng-src="./filesx/TS-danvan-kheo-cs-2.jpg"
-                                                      src="./filesx/TS-danvan-kheo-cs-2.jpg"
+                                                      ng-src="./filesx/ss.jpg"
+                                                      src="./filesx/ss.jpg"
                                                     />
                                                   </div>
                                                   <div className="news-title">
@@ -1977,10 +1979,10 @@ const Dashboard = () => {
                                                       ng-bind="dataItem.Title"
                                                       className="ng-binding"
                                                     >
-                                                      Krông Pắk tổ chức Đối
+                                                      Krông ANA tổ chức Đối
                                                       thoại với công nhân và
                                                       người nhận khoán trồng cà
-                                                      phê ở Krông Pắk
+                                                      phê ở Krông ANA
                                                     </a>
                                                   </div>
                                                 </div>
@@ -2024,7 +2026,7 @@ const Dashboard = () => {
                                                           ng-bind="dataItem.Title"
                                                           className="ng-binding"
                                                         >
-                                                          UBND huyện Krông Pắc
+                                                          UBND huyện Krông Ana
                                                           tổ chức Hội nghị
                                                           chuyên đề về giải pháp
                                                           tăng cường công tác
@@ -2053,7 +2055,7 @@ const Dashboard = () => {
                                                           className="ng-binding"
                                                         >
                                                           Lịch thi đấu Lân sư
-                                                          rồng huyện Krông Pắc
+                                                          rồng huyện Krông Ana
                                                           tỉnh Đắk Lắk mở rộng
                                                         </span>
                                                         <span className="news-item-date ng-binding">
@@ -2111,9 +2113,9 @@ const Dashboard = () => {
                                               _
                                               <img
                                                 alt="Người lao động An Giang kiến nghị giữ nguyên tuổi nghỉ hưu như hiện nay"
-                                                ng-src="./filesx/DBQH-tiep-xuc-nld-huu-4.jpg"
+                                                ng-src="./filesx/aa.jpg"
                                                 className="img-responsive"
-                                                src="./filesx/DBQH-tiep-xuc-nld-huu-4.jpg"
+                                                src="./filesx/aa.jpg"
                                               />
                                             </div>
                                             <div className="news-title">
@@ -2123,7 +2125,7 @@ const Dashboard = () => {
                                                 ng-bind="dataItem.Title"
                                                 className="ng-binding"
                                               >
-                                                Thêm địa chỉ đỏ Krông Pắk giáo
+                                                Thêm địa chỉ đỏ Krông ANA giáo
                                                 dục truyền thống cho thế hệ trẻ
                                               </a>
                                             </div>
@@ -2283,7 +2285,7 @@ const Dashboard = () => {
                                               >
                                                 <div className="news-img">
                                                   <img
-                                                    alt="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Pắc"
+                                                    alt="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Ana"
                                                     ng-src="./filesx/Ptrinh-luagao-2.jpg"
                                                     className="img-responsive"
                                                     src="./filesx/Ptrinh-luagao-2.jpg"
@@ -2292,14 +2294,14 @@ const Dashboard = () => {
                                                 <div className="news-title">
                                                   <a
                                                     href="#"
-                                                    title="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Pắc"
+                                                    title="Đoàn đại biểu Quốc hội tỉnh khóa XV tiếp xúc cử tri trước kỳ họp thứ 5 tại huyện Krông Ana"
                                                     ng-bind="dataItem.Title"
                                                     className="ng-binding"
                                                   >
                                                     Đoàn đại biểu Quốc hội tỉnh
                                                     khóa XV tiếp xúc cử tri
                                                     trước kỳ họp thứ 5 tại huyện
-                                                    Krông Pắc
+                                                    Krông Ana
                                                   </a>
                                                 </div>
                                               </div>
@@ -2311,7 +2313,7 @@ const Dashboard = () => {
                                                 >
                                                   <a
                                                     href="#"
-                                                    title="Triển khai, thống nhất nội dung, chương trình tổ chức Hội thi Bí thư Chi bộ giỏi huyện Krông Pắc năm..."
+                                                    title="Triển khai, thống nhất nội dung, chương trình tổ chức Hội thi Bí thư Chi bộ giỏi huyện Krông Ana năm..."
                                                   >
                                                     <div className="news-item-other">
                                                       <div className="news-item-title">
@@ -2323,7 +2325,7 @@ const Dashboard = () => {
                                                           nội dung, chương trình
                                                           tổ chức Hội thi Bí thư
                                                           Chi bộ giỏi huyện
-                                                          Krông Pắc năm...
+                                                          Krông Ana năm...
                                                         </span>
                                                         <span className="news-item-date ng-binding">
                                                           (09/05/2023)
@@ -2372,7 +2374,7 @@ const Dashboard = () => {
                                                 <div className="news-img">
                                                   -
                                                   <img
-                                                    alt="Khởi công nhà tình thương cho hộ nghèo tại xã Ea Yiêng"
+                                                    alt="Khởi công nhà tình thương cho hộ nghèo tại xã Băng Adrênh"
                                                     ng-src="./filesx/CP-xa-ThanhMyTay-ntm-2.jpg"
                                                     className="img-responsive"
                                                     src="./filesx/CP-xa-ThanhMyTay-ntm-2.jpg"
@@ -2381,12 +2383,13 @@ const Dashboard = () => {
                                                 <div className="news-title">
                                                   <a
                                                     href="#"
-                                                    title="Khởi công nhà tình thương cho hộ nghèo tại xã Ea Yiêng"
+                                                    title="Khởi công nhà tình thương cho hộ nghèo tại xã Băng Adrênh"
                                                     ng-bind="dataItem.Title"
                                                     className="ng-binding"
                                                   >
                                                     Khởi công nhà tình thương
-                                                    cho hộ nghèo tại xã Ea Yiêng
+                                                    cho hộ nghèo tại xã Băng
+                                                    Adrênh
                                                   </a>
                                                 </div>
                                               </div>
@@ -2658,7 +2661,7 @@ const Dashboard = () => {
                                     <div className="ms-rtestate-field">
                                       <div className="lv-box">
                                         <div className="category-title">
-                                          <a href="#">NÉT ĐẸP KRÔNG PẮK</a>
+                                          <a href="#">NÉT ĐẸP KRÔNG ANA</a>
                                         </div>
 
                                         <div
@@ -2893,7 +2896,7 @@ const Dashboard = () => {
                                         ng-controller="CapUy"
                                       >
                                         <div className="lv-category">
-                                          <a href="#">VỀ KRÔNG PẮK</a>
+                                          <a href="#">VỀ KRÔNG ANA</a>
                                         </div>
                                         <link
                                           rel="stylesheet"
@@ -3969,25 +3972,25 @@ const Dashboard = () => {
                         <div id="ctl00_g_91ea13ce_902e_4f6e_b075_5bed268b3192">
                           <div>
                             <strong style={{ fontFamily: "tahoma" }}>
-                              CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG PẮC
+                              CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN KRÔNG ANA
                             </strong>
                           </div>
                           <div>
-                            <strong>Trụ sở&#58;</strong>&#160;305, đường Giải
-                            Phóng, thị trấn Phước An, huyện Krông Pắc, tỉnh Đắk
-                            Lắk.
+                            <strong>Trụ sở&#58;</strong>&#160;UBND huyện Krông
+                            Ana - 94 Nguyễn Tất Thành, Thị trấn Buôn Trấp, huyện
+                            Krông Ana, tỉnh Đắk Lắk
                             <br />
-                            <strong>Điện thoại&#58;</strong>{" "}
-                            0262.3521102&#160;&#160; <strong> Fax&#58;</strong>
-                            0262.3522267
+                            <strong>Điện thoại&#58;</strong> 0262
+                            3637026&#160;&#160;
                             <strong>
                               <br />
                             </strong>
                           </div>
                           <div>
-                            <strong>Email&#58;</strong> krongpak@daklak.gov.vn
+                            <strong>Email&#58;</strong>{" "}
+                            banbientap@krongana.daklak.gov.vn
                           </div>
-                          Bản quyền thuộc Ủy Ban Nhân Dân Huyện Krông Pắk.
+                          Bản quyền thuộc Ủy Ban Nhân Dân Huyện Krông Ana.
                           <br />
                           Ghi rõ nguồn khi phát hành thông tin từ nguồn này. ​
                         </div>
