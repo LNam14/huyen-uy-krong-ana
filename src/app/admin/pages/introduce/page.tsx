@@ -1,4 +1,4 @@
-"use client";
+
 import { fireStoreConfig } from "@/app/firebase/route";
 import {
   Box,
