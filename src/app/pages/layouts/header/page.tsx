@@ -1,3 +1,4 @@
+"use client";
 import CreateBanner from "@/app/admin/components/form/CreateBanner";
 import { fireStoreConfig } from "@/app/firebase/route";
 import { getAllBanner, getBannerList } from "@/app/redux-store/banner/slice";
