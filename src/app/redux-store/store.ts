@@ -3,12 +3,24 @@ import loginReducer from "./login/slice";
 import userReducer from "./users/slice";
 import categoryReducer from "./category/slice";
 import newsReducer from "./news/slice";
+import homeReducer from "./home/slice";
+import logoRuducer from "./logo/slice";
+import bannerReducer from "./banner/slice";
+import rightReducer from "./right/slice";
+import topReducer from "./top/slice";
+import viewReducer from "./update-view/slice";
 export const store = configureStore({
   reducer: {
     loginState: loginReducer,
     userState: userReducer,
     categoryState: categoryReducer,
     newsState: newsReducer,
+    homeState: homeReducer,
+    bannerState: bannerReducer,
+    logoState: logoRuducer,
+    rightState: rightReducer,
+    topState: topReducer,
+    viewState: viewReducer,
   },
 });
 

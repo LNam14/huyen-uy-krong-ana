@@ -42,7 +42,7 @@ interface CategoryItem {
 interface LooseObject {
   [key: string]: any;
 }
-const News = () => {
+const Category = () => {
   const dispatch = useAppDispatch();
   const categoryList: CategoryItem[] = useAppSelector(getCategoryList);
   const [categoryListState, setCategoryListState] = useState<CategoryItem[]>(
@@ -206,23 +206,39 @@ const News = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>
-                    <Typography color="textSecondary" variant="h6">
-                      Id
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight={"bold"}
+                    >
+                      ID
                     </Typography>
                   </TableCell>
 
                   <TableCell>
-                    <Typography color="textSecondary" variant="h6">
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight={"bold"}
+                    >
                       Tên danh mục
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="textSecondary" variant="h6">
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight={"bold"}
+                    >
                       Được thêm bởi
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="textSecondary" variant="h6">
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight={"bold"}
+                    >
                       Ngày tạo
                     </Typography>
                   </TableCell>
@@ -316,4 +332,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default Category;

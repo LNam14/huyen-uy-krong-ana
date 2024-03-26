@@ -29,15 +29,15 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: "Buttons",
+    title: "Quản lý layout",
     icon: IconCircleDot,
-    href: "/admin/pages/buttons",
+    href: "/admin/pages/layout",
   },
   {
     id: uniqueId(),
-    title: "Forms",
+    title: "Trang GIỚI THIỆU",
     icon: IconTable,
-    href: "/admin/pages/forms",
+    href: "/admin/pages/introduce",
   },
   {
     id: uniqueId(),

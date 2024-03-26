@@ -103,7 +103,7 @@ const YearlyBreakup = () => {
                 }}
               ></Avatar>
               <Typography variant="subtitle2" color="textSecondary">
-                2023
+                2024
               </Typography>
             </Stack>
           </Stack>

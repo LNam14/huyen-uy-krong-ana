@@ -18,8 +18,10 @@ import { useAppDispatch, useAppSelector } from "@/app/redux-store/hook";
 import {
   getNewsApprove,
   getNewsList,
+  getNewsRefuse,
   getNewsWait,
 } from "@/app/redux-store/news/slice";
+import FormRefuse from "../../form/FormRefuse";
 interface newsItem {
   ID: number;
   TenDanhMuc: string;
@@ -45,7 +47,7 @@ const Refuse = () => {
   });
   useEffect(() => {
     const asyncCall = async () => {
-      await dispatch(getNewsApprove());
+      await dispatch(getNewsRefuse());
     };
     asyncCall();
   }, []);
@@ -105,44 +107,76 @@ const Refuse = () => {
         <TableHead>
           <TableRow>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
-                Id
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
+                ID
               </Typography>
             </TableCell>
 
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tiêu đề chính
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tiêu đề phụ
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tác giả
               </Typography>
             </TableCell>
 
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Ngày tạo
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Lượt xem
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Trạng thái
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Hành động
               </Typography>
             </TableCell>
@@ -220,7 +254,7 @@ const Refuse = () => {
           onChange={handlePageChange}
         />
       </Box>
-      <FormWFA open={isOpen} closeForm={closeForm} news={selectedNews} />
+      <FormRefuse open={isOpen} closeForm={closeForm} news={selectedNews} />
     </TableContainer>
   );
 };
