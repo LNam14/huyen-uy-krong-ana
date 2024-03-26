@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Box, IconButton, Typography } from "@mui/material";
 import { IconHome } from "@tabler/icons-react";
 import { useState } from "react";
