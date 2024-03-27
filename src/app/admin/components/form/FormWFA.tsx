@@ -3,6 +3,12 @@ import { Modal, Box, TextField, Button, Typography } from "@mui/material";
 import { useAppDispatch } from "@/app/redux-store/hook";
 import { getCategory, updateCategory } from "@/app/redux-store/category/slice";
 import QuillEditor from "./QuillEditor";
+import {
+  getNewsApprove,
+  getNewsRefuse,
+  getNewsWait,
+  updateNews,
+} from "@/app/redux-store/news/slice";
 
 interface LooseObject {
   [key: string]: any;
@@ -50,17 +56,13 @@ const FormWFA = ({
     setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSave = async () => {
-    await dispatch(updateCategory(data));
-    await dispatch(getCategory());
+  const handleAction = async (status: string) => {
+    const updatedData = { ...data, TrangThai: status };
+    await dispatch(updateNews(updatedData));
+    status === "Đã phê duyệt"
+      ? await dispatch(getNewsWait())
+      : await dispatch(getNewsWait());
     closeForm();
-  };
-
-  const handleContentChange = (content: string) => {
-    setData({
-      ...data,
-      NoiDung: content,
-    });
   };
 
   return (
@@ -155,11 +157,25 @@ const FormWFA = ({
           Lượt người xem: {data.LuotXem}
         </Typography>
         <Box display={"flex"} justifyContent={"space-between"} marginTop={2}>
-          <Button variant="contained" color="success" onClick={handleSave}>
-            Phê duyệt
-          </Button>
+          <Box>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => handleAction("Đã phê duyệt")}
+            >
+              Phê duyệt
+            </Button>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => handleAction("Bị từ chối")}
+              sx={{ marginLeft: 2 }}
+            >
+              Từ chối
+            </Button>
+          </Box>
           <Button variant="contained" color="success" onClick={closeForm}>
-            Từ chối
+            Đóng
           </Button>
         </Box>
       </Box>

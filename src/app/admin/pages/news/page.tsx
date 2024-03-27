@@ -8,6 +8,8 @@ import WaitForApproval from "../../components/tabs/Wait-for-approval/page";
 import Refuse from "../../components/tabs/Refuse/page";
 import { IconPlus } from "@tabler/icons-react";
 import CreateNews from "../../components/form/CreateNews";
+import Remove from "../../components/tabs/Remove/page";
+import Publishing from "../../components/tabs/Publishing/page";
 
 const News = () => {
   const [value, setValue] = useState(0);
@@ -54,19 +56,25 @@ const News = () => {
             >
               <Tab label="Chờ phê duyệt" />
               <Tab label="Đã duyệt" />
+              <Tab label="Đã xuất bản" />
               <Tab label="Bị từ chối" />
+              <Tab label="Đã gỡ" />
             </Tabs>
 
             <TabPanel value={value} index={0}>
               <WaitForApproval />
             </TabPanel>
-
             <TabPanel value={value} index={1}>
               <Approval />
             </TabPanel>
-
             <TabPanel value={value} index={2}>
+              <Publishing />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
               <Refuse />
+            </TabPanel>
+            <TabPanel value={value} index={4}>
+              <Remove />
             </TabPanel>
           </div>
         </BaseCard>

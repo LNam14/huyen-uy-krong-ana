@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Box,
@@ -7,20 +7,52 @@ import {
   Typography,
   Select,
   FormLabel,
+  MenuItem,
 } from "@mui/material";
 import { getCookie } from "cookies-next";
-import { useAppDispatch } from "@/app/redux-store/hook";
+import { useAppDispatch, useAppSelector } from "@/app/redux-store/hook";
 import QuillEditor from "./QuillEditor";
-import { createNews } from "@/app/redux-store/news/slice";
+import { createNews, getNewsWait } from "@/app/redux-store/news/slice";
+import { getCategory, getCategoryList } from "@/app/redux-store/category/slice";
+import { fireStoreConfig } from "@/app/firebase/firebase";
+import {
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+  uploadBytes,
+} from "firebase/storage";
 
 interface LooseObject {
   [key: string]: any;
 }
 
+interface CategoryItem {
+  ID: number;
+  TenDanhMuc: string;
+  CreateBy: string;
+  CreateDate: string;
+}
+
 const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
   const dispatch = useAppDispatch();
+  const categoryList: CategoryItem[] = useAppSelector(getCategoryList);
+  const [categoryListState, setCategoryListState] = useState<CategoryItem[]>(
+    []
+  );
 
-  const [ss, setSS] = useState("");
+  useEffect(() => {
+    const asyncCall = async () => {
+      await dispatch(getCategory());
+    };
+    asyncCall();
+  }, []);
+
+  useEffect(() => {
+    if (categoryList) {
+      setCategoryListState(categoryList);
+    }
+  }, [categoryList]);
+
   const username = getCookie("username");
   const [data, setData] = useState<LooseObject>({
     TenDanhMuc: "",
@@ -31,20 +63,64 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
     NoiDung: "",
     HinhAnh: "",
   });
+
+  const [image, setImage] = useState<File>();
+  const [isUploading, setIsUploading] = useState(false);
+
+  const authApp = fireStoreConfig();
+  const storage: any = authApp;
+
+  const handleSelectFile = (files: FileList | null) => {
+    if (files && files[0] && files[0].size < 1000000) {
+      setImage(files[0]);
+      const selectedFile = files[0];
+      const imageUrl = URL.createObjectURL(selectedFile);
+    } else {
+      console.error("Error: File not found or file size is too large.");
+    }
+  };
+
+  const handleImageUpload = async () => {
+    try {
+      if (image) {
+        const storageRef = ref((await storage).storage, `images/${image.name}`);
+        await uploadBytes(storageRef, image);
+
+        setIsUploading(true);
+        const imageUrl = await getDownloadURL(storageRef);
+        console.log("Image uploaded. Download URL:", imageUrl);
+        setData({
+          ...data,
+          HinhAnh: imageUrl,
+        });
+        alert;
+        setIsUploading(false);
+        return imageUrl;
+      }
+
+      return null;
+    } catch (error: any) {
+      console.error("Error uploading image:", error.message);
+      return null;
+    }
+  };
+
   const handleSave = async () => {
     alert("Thêm thành công!");
-    console.log("data", data);
-    console.log("sssss", ss);
-
     await dispatch(createNews({ data }));
+    await dispatch(getNewsWait());
+    console.log(data, "data");
+
     closeForm();
   };
+
   const handleContentChange = (content: string) => {
     setData({
       ...data,
       NoiDung: content,
     });
   };
+
   return (
     <Modal open={open} onClose={closeForm}>
       <Box
@@ -103,18 +179,27 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
             fullWidth
             name="TenDanhMuc"
             size="small"
-            type={"file"}
             sx={{ marginBottom: 2 }}
-          />
+            value={data.TenDanhMuc}
+            onChange={(e) =>
+              setData({
+                ...data,
+                TenDanhMuc: e.target.value as string,
+              })
+            }
+          >
+            {categoryListState.map((category) => (
+              <MenuItem key={category.ID} value={category.TenDanhMuc}>
+                {category.TenDanhMuc}
+              </MenuItem>
+            ))}
+          </Select>
         </FormLabel>
         <FormLabel>
           Hình ảnh
-          <TextField
-            fullWidth
-            name="TenDanhMuc"
-            size="small"
-            type={"file"}
-            sx={{ marginBottom: 2 }}
+          <input
+            type="file"
+            onChange={(e) => handleSelectFile(e.target.files)}
           />
         </FormLabel>
         <FormLabel>
@@ -122,9 +207,26 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
           <QuillEditor onContentChange={handleContentChange} />
         </FormLabel>
         <Box display={"flex"} justifyContent={"space-between"} marginTop={2}>
-          <Button variant="contained" color="success" onClick={handleSave}>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => {
+              handleImageUpload();
+            }}
+          >
+            Thêm ảnh
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => {
+              handleImageUpload();
+              handleSave();
+            }}
+          >
             Thêm mới
           </Button>
+
           <Button variant="contained" color="success" onClick={closeForm}>
             Đóng
           </Button>

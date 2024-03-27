@@ -34,13 +34,29 @@ export const createCategory = createAsyncThunk(
 
 export const getCategory = createAsyncThunk("category/get", async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/category/get");
+    const response = await axios.get(
+      "http://localhost:3000/api/category/get/get-all"
+    );
 
     return response.data;
   } catch (error: any) {
     throw error.response?.data || error.message;
   }
 });
+export const getCategoryByName = createAsyncThunk(
+  "category/get-by-name",
+  async ({ data }: { data: any }) => {
+    try {
+      const response = await axios.post("/api/category/get/get-by-name", {
+        ...data,
+      });
+
+      return response.data;
+    } catch (error: any) {
+      throw error.response?.data || error.message;
+    }
+  }
+);
 
 export const deleteCategory = createAsyncThunk(
   "category/delete",
@@ -48,7 +64,6 @@ export const deleteCategory = createAsyncThunk(
     try {
       const response = await axios.post("/api/category/delete", ID, {});
 
-      console.log("ssss", response.data);
       return response.data;
     } catch (error: any) {
       throw error.response?.data || error.message;

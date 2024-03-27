@@ -53,7 +53,7 @@ const Login = () => {
             className="login-header"
             style={{
               backgroundColor: "#ff0000",
-              backgroundImage: "url(/images/logo/logo.png)",
+              backgroundImage: "url(/images/logo/logo1.png)",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "10px center",
             }}
@@ -177,12 +177,12 @@ const Login = () => {
               <strong>Địa chỉ:</strong>
               <span>
                 {" "}
-                305, Giải Phóng, TT. Phước An, huyện Krông Ana, tỉnh Đắk Lắk
+                UBND huyện Krông Ana - 94 Nguyễn Tất Thành, Thị trấn Buôn Trấp, huyện Krông Ana, tỉnh Đắk Lắk
               </span>
             </div>
             <div>
               <strong>Điện thoại:</strong>
-              <span> (0262)-3521-102 , số Fax: (0262)-3522-267</span>
+              <span> 0262 3637026 , số Fax: (0262)-3522-267</span>
             </div>
           </div>
           <div className="Group-2 fGroup">
@@ -192,12 +192,12 @@ const Login = () => {
             </div>
             <div>
               <strong>Điện thoại:</strong>
-              <span> (0262)-3521-102</span>
+              <span> 0262 3637026 </span>
             </div>
           </div>
           <div className="Group-3 fGroup">
             <div>
-              <strong>Bản quyền © 2023 Văn phòng Huyện ủy Krông Ana</strong>
+              <strong>Bản quyền © 2024 Văn phòng Huyện ủy Krông Ana</strong>
             </div>
             <div>
               <strong>Thiết kế và phát triển:</strong> Công ty Công nghệ

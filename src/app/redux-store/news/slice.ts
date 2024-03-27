@@ -17,13 +17,23 @@ export const createNews = createAsyncThunk(
   "news/create",
   async ({ data }: { data: any }) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/news/create",
-        {
-          ...data,
-        }
-      );
-      console.log("response.data", response.data);
+      const response = await axios.post("/api/news/create", {
+        ...data,
+      });
+
+      return response.data;
+    } catch (error: any) {
+      throw error.response?.data || error.message;
+    }
+  }
+);
+export const getNewsByCategory = createAsyncThunk(
+  "news/get-by-name",
+  async ({ data }: { data: any }) => {
+    try {
+      const response = await axios.post("/api/news/get/get-by-name", {
+        ...data,
+      });
 
       return response.data;
     } catch (error: any) {
@@ -34,8 +44,7 @@ export const createNews = createAsyncThunk(
 
 export const getNewsWait = createAsyncThunk("news/get-wait", async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/news/get-wait");
-    console.log("response.data", response.data);
+    const response = await axios.get("/api/news/get/get-wait");
 
     return response.data;
   } catch (error: any) {
@@ -44,28 +53,43 @@ export const getNewsWait = createAsyncThunk("news/get-wait", async () => {
 });
 export const getNewsApprove = createAsyncThunk("news/get-approve", async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:3000/api/news/get-approve"
-    );
-    console.log("response.data", response.data);
+    const response = await axios.get("/api/news/get/get-approve");
 
     return response.data;
   } catch (error: any) {
     throw error.response?.data || error.message;
   }
 });
-export const getNewsRefuse = createAsyncThunk("news/get-approve", async () => {
+export const getNewsRefuse = createAsyncThunk("news/get-refuse", async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:3000/api/news/get-approve"
-    );
-    console.log("response.data", response.data);
+    const response = await axios.get("/api/news/get/get-refuse");
 
     return response.data;
   } catch (error: any) {
     throw error.response?.data || error.message;
   }
 });
+export const getNewsRemove = createAsyncThunk("news/get-remove", async () => {
+  try {
+    const response = await axios.get("/api/news/get/get-remove");
+
+    return response.data;
+  } catch (error: any) {
+    throw error.response?.data || error.message;
+  }
+});
+export const getNewsPublishing = createAsyncThunk(
+  "news/get-publishing",
+  async () => {
+    try {
+      const response = await axios.get("/api/news/get/get-publishing");
+
+      return response.data;
+    } catch (error: any) {
+      throw error.response?.data || error.message;
+    }
+  }
+);
 export const deleteNews = createAsyncThunk("news/delete", async (ID: any) => {
   try {
     const response = await axios.post("/api/news/delete", ID, {});
@@ -144,6 +168,58 @@ export const newsSlice = createSlice({
         state.originList = action.payload;
       })
       .addCase(getNewsApprove.rejected, (state, action) => {
+        state.status = "failed";
+        state.newsList = null;
+        state.originList = null;
+      })
+      .addCase(getNewsRefuse.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getNewsRefuse.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.newsList = action.payload;
+        state.originList = action.payload;
+      })
+      .addCase(getNewsRefuse.rejected, (state, action) => {
+        state.status = "failed";
+        state.newsList = null;
+        state.originList = null;
+      })
+      .addCase(getNewsRemove.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getNewsRemove.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.newsList = action.payload;
+        state.originList = action.payload;
+      })
+      .addCase(getNewsRemove.rejected, (state, action) => {
+        state.status = "failed";
+        state.newsList = null;
+        state.originList = null;
+      })
+      .addCase(getNewsPublishing.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getNewsPublishing.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.newsList = action.payload;
+        state.originList = action.payload;
+      })
+      .addCase(getNewsPublishing.rejected, (state, action) => {
+        state.status = "failed";
+        state.newsList = null;
+        state.originList = null;
+      })
+      .addCase(getNewsByCategory.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getNewsByCategory.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.newsList = action.payload;
+        state.originList = action.payload;
+      })
+      .addCase(getNewsByCategory.rejected, (state, action) => {
         state.status = "failed";
         state.newsList = null;
         state.originList = null;

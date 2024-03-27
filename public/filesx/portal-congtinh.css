@@ -297,7 +297,7 @@ body.mas-system .ms-core-overlay {
   line-height: 38px;
   height: 36px;
   padding-left: 15px;
-  background: url("./bg-lienket.png") no-repeat left center;
+  background: url("/images/bg-lienket.png") no-repeat left center;
 }
 .link-web-item {
   width: 250px;
@@ -4305,7 +4305,6 @@ object[id*="x-sharepoint-uc"],
   box-shadow: 0px 0px 3px #d6d6d6;
   margin-bottom: 10px;
   position: relative;
-  min-height: 289px;
 }
 .lv-category a,
 .lv-category a:visited,
@@ -4676,6 +4675,7 @@ object[id*="x-sharepoint-uc"],
 }
 .home1 .div-item-title a div {
   text-align: center;
+  color: white;
 }
 .home1 .div-item-title a:hover {
   color: rgb(255, 255, 153);
@@ -5034,19 +5034,13 @@ object[id*="x-sharepoint-uc"],
 @media (min-width: 768px) {
   .portalMain {
     position: relative;
-    min-height: 1530px;
+    min-height: auto;
   }
   .portal-right {
     position: absolute;
     top: 0;
     right: 0;
     float: right;
-  }
-}
-@media (min-width: 992px) {
-  .banner-content {
-    background: url("./mai.png") no-repeat 54% 5px;
-    background-size: 18%;
   }
 }
 

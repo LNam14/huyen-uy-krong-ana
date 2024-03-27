@@ -20,6 +20,7 @@ import {
   getNewsList,
   getNewsWait,
 } from "@/app/redux-store/news/slice";
+import FormApprove from "../../form/FormApprove";
 interface newsItem {
   ID: number;
   TenDanhMuc: string;
@@ -105,44 +106,76 @@ const Approval = () => {
         <TableHead>
           <TableRow>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
-                Id
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
+                ID
               </Typography>
             </TableCell>
 
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tiêu đề chính
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tiêu đề phụ
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Tác giả
               </Typography>
             </TableCell>
 
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Ngày tạo
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Lượt xem
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Trạng thái
               </Typography>
             </TableCell>
             <TableCell>
-              <Typography color="textSecondary" variant="h6">
+              <Typography
+                color="textSecondary"
+                variant="h6"
+                fontWeight={"bold"}
+              >
                 Hành động
               </Typography>
             </TableCell>
@@ -220,7 +253,7 @@ const Approval = () => {
           onChange={handlePageChange}
         />
       </Box>
-      <FormWFA open={isOpen} closeForm={closeForm} news={selectedNews} />
+      <FormApprove open={isOpen} closeForm={closeForm} news={selectedNews} />
     </TableContainer>
   );
 };

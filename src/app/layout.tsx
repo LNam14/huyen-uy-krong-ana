@@ -1,5 +1,6 @@
 "use client";
 import { baselightTheme } from "@/utils/theme/DefaultColors";
+import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { Provider } from "react-redux";
 import { store } from "./redux-store/store";
