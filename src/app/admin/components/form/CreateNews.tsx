@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux-store/hook";
 import QuillEditor from "./QuillEditor";
 import { createNews, getNewsWait } from "@/app/redux-store/news/slice";
 import { getCategory, getCategoryList } from "@/app/redux-store/category/slice";
-import { fireStoreConfig } from "@/app/firebase/route";
+import { fireStoreConfig } from "@/app/firebase/firebase";
 import {
   ref,
   uploadBytesResumable,

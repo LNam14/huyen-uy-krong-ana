@@ -1,5 +1,5 @@
-
-import { fireStoreConfig } from "@/app/firebase/route";
+"use client"
+import { fireStoreConfig } from "@/app/firebase/firebase";
 import {
   Box,
   Button,

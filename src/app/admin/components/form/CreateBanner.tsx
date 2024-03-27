@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import { IconCheck } from "@tabler/icons-react";
-import { fireStoreConfig } from "@/app/firebase/route";
+import { fireStoreConfig } from "@/app/firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useAppDispatch } from "@/app/redux-store/hook";
 import { createBanner, deleteBanner } from "@/app/redux-store/banner/slice";

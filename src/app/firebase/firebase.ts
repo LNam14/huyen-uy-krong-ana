@@ -7,7 +7,7 @@ export async function fireStoreConfig() {
   let app = null;
 
   if (getApps().length === 0) {
-    const firebaseConfig = {
+    const firebaseConfig: any = {
       apiKey: "AIzaSyAMyo0PzHXpQFBl-QjUMtINZQe5-xKwQYU",
       authDomain: "image-krong-ana.firebaseapp.com",
       projectId: "image-krong-ana",
