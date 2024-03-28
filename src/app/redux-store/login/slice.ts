@@ -21,7 +21,7 @@ export const loginAsync = createAsyncThunk(
   "login/login",
   async ({ data }: { data: any }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/login", {
+      const response = await axios.post("https://huyen-uy-krong-ana.vercel.app/api/login", {
         ...data,
       });
       if (response.data.token) {
