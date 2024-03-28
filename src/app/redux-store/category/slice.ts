@@ -19,7 +19,7 @@ export const createCategory = createAsyncThunk(
   async ({ data }: { data: any }) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/category/create",
+        "/api/category/create",
         {
           ...data,
         }
@@ -35,7 +35,7 @@ export const createCategory = createAsyncThunk(
 export const getCategory = createAsyncThunk("category/get", async () => {
   try {
     const response = await axios.get(
-      "http://localhost:3000/api/category/get/get-all"
+      "/api/category/get/get-all"
     );
 
     return response.data;

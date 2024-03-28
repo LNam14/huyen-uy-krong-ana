@@ -17,7 +17,7 @@ const initialState: AuthenticationState = {
 
 export const getUser = createAsyncThunk("login/login", async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/getUsers", {});
+    const response = await axios.get("/api/getUsers", {});
 
     console.log("response.data.token", response.data.token);
 
