@@ -11,19 +11,19 @@ const dbDev = mysql({
 
 const dbProd = mysql({
   config: {
-    host: "13.213.65.119",
+    host: "103.241.43.169",
     port: 3306,
-    database: "huyen_uy_krongpak",
+    database: "huyen_uy",
     user: "root",
-    password: "takatech0908",
+    password: "12345678",
   },
 });
 
 // Main handler function
 export default async function excuteQuery(query: any, values: any) {
   try {
-    const results = await dbDev.query(query, values);
-    await dbDev.end();
+    const results = await dbProd.query(query, values);
+    await dbProd.end();
     return results;
   } catch (error: any) {
     return { status: false, error: error.message };

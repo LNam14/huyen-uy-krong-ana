@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:80"  
     restart: always
-   db:
+  db:
     image: mysql:8.1  
     environment:
       DB_USER: root
