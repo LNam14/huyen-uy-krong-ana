@@ -448,7 +448,7 @@ const Home = () => {
                           </div>
                           <div className="div-item-all">
                             <div className="div-Tonghop">
-                              {topListState.map((items: any, index: number) => (
+                              {topListState ? topListState.map((items: any, index: number) => (
                                 <div
                                   onClick={() => {
                                     handleDetailNews(items);
@@ -469,7 +469,7 @@ const Home = () => {
                                     </a>
                                   </li>
                                 </div>
-                              ))}
+                              )):null}
                             </div>
                           </div>
                         </div>
@@ -507,7 +507,7 @@ const Home = () => {
             <div className="home3">
               <div className="COL1">
                 <div className="ms-webpart-zone ms-fullWidth">
-                  {newsListState.map((items: any, index: number) => (
+                  {newsListState ? newsListState.map((items: any, index: number) => (
                     <div
                       key={index}
                       className="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical ms-fullWidth"
@@ -605,7 +605,7 @@ const Home = () => {
                       </div>
                       <div className="ms-PartSpacingVertical"></div>
                     </div>
-                  ))}
+                  )):null}
                 </div>
               </div>
             </div>
