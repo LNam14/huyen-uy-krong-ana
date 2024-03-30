@@ -1041,8 +1041,32 @@
     margin-bottom: 20px;
   }
 }
-@media (min-width: 991px) {
+@media (max-width: 768px) {
+  .logo-reponsive{
+    display: flex;
+  }
+  .img-logo-hi-100 {
+    height: 40px;
+    width: 100px;
+    margin-left: 5px;
+  }
   
+  .img-logo-hi-80 {
+    height: 30px;
+    width: 250px;
+    margin-left: 5px; 
+    margin-top: 5px;
+  }
+}
+@media (min-width: 768px) {
+  .logo-reponsive{
+    display: none;
+  }
+}
+@media (min-width: 991px) {
+  .logo-reponsive{
+    display: none;
+  }
   .img-logo-hi-100 {
     height: 90px;
   }

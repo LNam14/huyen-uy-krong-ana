@@ -199,23 +199,16 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
           Hình ảnh
           <input
             type="file"
+            style={{ width: '100%', marginBottom: 10 }}
             onChange={(e) => handleSelectFile(e.target.files)}
           />
         </FormLabel>
-        <FormLabel>
+        <FormLabel >
           Nội dung
           <QuillEditor onContentChange={handleContentChange} />
         </FormLabel>
         <Box display={"flex"} justifyContent={"space-between"} marginTop={2}>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={() => {
-              handleImageUpload();
-            }}
-          >
-            Thêm ảnh
-          </Button>
+         
           <Button
             variant="contained"
             color="success"

@@ -169,6 +169,18 @@ const Home = () => {
       </head>
       <body className="mas-portal v2" style={{ minHeight: 1650 }}>
       <header>
+        <div className="logo-reponsive">
+        {logoListState &&
+                      logoListState.map((item: LogoItem, index: number) => (
+                        <img
+                        className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
+                          key={index}
+                         
+                          src={item.image}
+                          
+                        />
+                      ))}
+        </div>
           <nav
             id="lv-navbar"
             className="navbar navbar-default lv-navbar-no-submenu"

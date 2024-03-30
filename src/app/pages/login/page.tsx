@@ -173,7 +173,7 @@ const Login = () => {
               <strong>Cơ quan chủ quản:</strong>
               <span> Văn phòng Huyện ủy Krông Ana</span>
             </div>
-            <div>
+            {/* <div>
               <strong>Địa chỉ:</strong>
               <span>
                 {" "}
@@ -183,9 +183,9 @@ const Login = () => {
             <div>
               <strong>Điện thoại:</strong>
               <span> 0262 3637026 , số Fax: (0262)-3522-267</span>
-            </div>
+            </div> */}
           </div>
-          <div className="Group-2 fGroup">
+          {/* <div className="Group-2 fGroup">
             <div>
               <strong>Đơn vị quản lý:</strong>
               <span> Huyện ủy Krông Ana</span>
@@ -194,7 +194,7 @@ const Login = () => {
               <strong>Điện thoại:</strong>
               <span> 0262 3637026 </span>
             </div>
-          </div>
+          </div> */}
           <div className="Group-3 fGroup">
             <div>
               <strong>Bản quyền © 2024 Văn phòng Huyện ủy Krông Ana</strong>
