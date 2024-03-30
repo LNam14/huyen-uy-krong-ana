@@ -33,42 +33,42 @@ const Menuitems = [
     icon: IconCircleDot,
     href: "/admin/pages/layout",
   },
-  {
-    id: uniqueId(),
-    title: "Trang GIỚI THIỆU",
-    icon: IconTable,
-    href: "/admin/pages/introduce",
-  },
-  {
-    id: uniqueId(),
-    title: "Alerts",
-    icon: IconInfoCircle,
-    href: "/admin/pages/alerts",
-  },
-  {
-    id: uniqueId(),
-    title: "Ratings",
-    icon: IconStar,
-    href: "/admin/pages/ratings",
-  },
-  {
-    id: uniqueId(),
-    title: "Images",
-    icon: IconPhoto,
-    href: "/admin/pages/images",
-  },
-  {
-    id: uniqueId(),
-    title: "Pagination",
-    icon: IconUser,
-    href: "/admin/pages/pagination",
-  },
-  {
-    id: uniqueId(),
-    title: "Tables",
-    icon: IconLayoutGrid,
-    href: "/admin/pages/table",
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: "Trang GIỚI THIỆU",
+  //   icon: IconTable,
+  //   href: "/admin/pages/introduce",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Alerts",
+  //   icon: IconInfoCircle,
+  //   href: "/admin/pages/alerts",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Ratings",
+  //   icon: IconStar,
+  //   href: "/admin/pages/ratings",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Images",
+  //   icon: IconPhoto,
+  //   href: "/admin/pages/images",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Pagination",
+  //   icon: IconUser,
+  //   href: "/admin/pages/pagination",
+  // },
+  // {
+  //   id: uniqueId(),
+  //   title: "Tables",
+  //   icon: IconLayoutGrid,
+  //   href: "/admin/pages/table",
+  // },
 ];
 
 export default Menuitems;

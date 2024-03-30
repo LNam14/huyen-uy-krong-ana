@@ -19,7 +19,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      window.location.replace("/admin/pages/alerts");
+      window.location.replace("/admin/pages/category");
     }
   }, [token]);
 
@@ -31,7 +31,7 @@ const Login = () => {
     }
     if (res.meta.requestStatus === "fulfilled") {
       setCookie("username", data.UserName);
-      window.location.replace("/admin/pages/alerts");
+      window.location.replace("/admin/pages/category");
     }
   };
 
