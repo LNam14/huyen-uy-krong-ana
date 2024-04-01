@@ -69,23 +69,24 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
 
   const authApp = fireStoreConfig();
   const storage: any = authApp;
-
+  const [imageUrl, setImageUrl] = useState<string>("");
   const handleSelectFile = (files: FileList | null) => {
     if (files && files[0] && files[0].size < 1000000) {
-      setImage(files[0]);
       const selectedFile = files[0];
       const imageUrl = URL.createObjectURL(selectedFile);
+      setImageUrl(imageUrl); 
+      setImage(files[0]);
     } else {
       console.error("Error: File not found or file size is too large.");
     }
   };
-
+  const [isImageConfirmed, setIsImageConfirmed] = useState(false);
   const handleImageUpload = async () => {
     try {
       if (image) {
         const storageRef = ref((await storage).storage, `images/${image.name}`);
         await uploadBytes(storageRef, image);
-
+        
         setIsUploading(true);
         const imageUrl = await getDownloadURL(storageRef);
         console.log("Image uploaded. Download URL:", imageUrl);
@@ -93,8 +94,8 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
           ...data,
           HinhAnh: imageUrl,
         });
-        alert;
         setIsUploading(false);
+        setIsImageConfirmed(true);
         return imageUrl;
       }
 
@@ -106,13 +107,17 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
   };
 
   const handleSave = async () => {
-    alert("Thêm thành công!");
+    if (!isImageConfirmed) {
+      alert("Vui lòng xác nhận ảnh");
+      return; 
+    }
+  
     await dispatch(createNews({ data }));
     await dispatch(getNewsWait());
-    console.log(data, "data");
-
     closeForm();
+    alert("Thêm thành công!");
   };
+
 
   const handleContentChange = (content: string) => {
     setData({
@@ -202,6 +207,12 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
             style={{ width: '100%', marginBottom: 10 }}
             onChange={(e) => handleSelectFile(e.target.files)}
           />
+           {imageUrl && (
+    <div>
+      <img src={imageUrl} alt="Selected" style={{marginBottom: "10px", maxWidth: '100%', maxHeight: '200px', marginTop: '10px', display: "flex", flexDirection: "column"}} />
+      <Button sx={{marginBottom: "10px"}} variant="contained" color="success" onClick={() => handleImageUpload()}>Xác nhận ảnh</Button>
+    </div>
+  )}
         </FormLabel>
         <FormLabel >
           Nội dung
@@ -213,7 +224,6 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
             variant="contained"
             color="success"
             onClick={() => {
-              handleImageUpload();
               handleSave();
             }}
           >
