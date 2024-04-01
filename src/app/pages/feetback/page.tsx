@@ -261,9 +261,9 @@ const FeetBack = () => {
                       style={{ display: "block" }}
                     >
                       <div className="containerdiv containerdiv-LV1 nobackground hasChildren">
-                        <ul className="container container-LV1">
+                       <ul className="container container-LV1">
                          
-                          <li className="menutop menutop-index-9 menutop-LV1 hasChildren hasChildrenLV1 ">
+                          <li className="menutop menutop-index-2 menutop-LV1 hasChildren hasChildrenLV1 ">
                             <div className="content content-LV1 hasChildren hasChildrenLV1 ">
                               <div className=" hasChildren hasChildrenLV1 contenticon contenticon-LV1 divnoicon noicon">
                                 <img
@@ -281,20 +281,26 @@ const FeetBack = () => {
                               </a>
                             </div>
                           </li>
-                          <li className="menutop menutop-index-2 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-                                target="_self"
-                              >
-                                GIỚI THIỆU
-                              </a>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-3 menutop-LV1 hasChildren hasChildrenLV1 ">
+                          <li className="menutop menutop-index-3 menutop-LV1">
+                                <div className="content content-LV1">
+                                  <div className="contenticon contenticon-LV1 divnoicon noicon"><img src="" title="Thời sự"
+                                      className="contenticonimg contenticonimg-LV1 imgnoicon noicon" /></div><a
+                                    className="contentlink contentlink-LV1" target="_self" href="#">Giới thiệu</a>
+                                </div>
+                                <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
+                                  <ul className="nav nav-pills">
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lãnh đạo Ban Tuyên giáo</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Chức năng – Nhiệm vụ</a>
+                                    </li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lãnh đạo Ban tuyên giáo qua các thời kỳ</a></li>
+                                   
+                                  </ul>
+                                </div>
+                              </li>
+                          <li className="menutop menutop-index-4 menutop-LV1 hasChildren hasChildrenLV1 ">
                             <div
                               className="content content-LV1 hasChildren hasChildrenLV1 "
                               style={{ cursor: "pointer" }}
@@ -309,8 +315,9 @@ const FeetBack = () => {
                                 TIN TỨC - SỰ KIỆN
                               </a>
                             </div>
+                            
                           </li>
-                          <li className="menutop menutop-index-4 menutop-LV1">
+                          <li className="menutop menutop-index-5 menutop-LV1">
                             <div
                               className="content content-LV1"
                               style={{ cursor: "pointer" }}
@@ -325,8 +332,31 @@ const FeetBack = () => {
                                 HOẠT ĐỘNG TUYÊN GIÁO
                               </a>
                             </div>
+                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
+                                  <ul className="nav nav-pills">
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Tuyên truyền – Báo chí – Xuất bản</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Nghiên cứu dư luận xã hội</a>
+                                    </li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lý luận chính trị</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch sử Đảng</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Khoa giáo</a>
+                                    </li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Văn hóa – Văn nghệ</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Thư viện ảnh</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Video - Clip</a>
+                                    </li>
+                                  </ul>
+                            </div>
                           </li>
-                          <li className="menutop menutop-index-5 menutop-LV1 hasChildren hasChildrenLV1 ">
+                          <li className="menutop menutop-index-6 menutop-LV1 hasChildren hasChildrenLV1 ">
                             <div
                               className="content content-LV1 hasChildren hasChildrenLV1 "
                               style={{ cursor: "pointer" }}
@@ -341,8 +371,24 @@ const FeetBack = () => {
                                 THÔNG TIN TƯ LIỆU
                               </a>
                             </div>
+                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
+                                  <ul className="nav nav-pills">
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Kỹ năng</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Nghiệp vụ</a>
+                                    </li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Tài liệu tuyên truyền</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Tư liệu ngành tuyên giáo</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản</a>
+                                    </li>
+                                  </ul>
+                            </div>
                           </li>
-                          <li className="menutop menutop-index-6 menutop-LV1">
+                          <li className="menutop menutop-index-7 menutop-LV1">
                             <div
                               className="content content-LV1"
                               style={{ cursor: "pointer" }}
@@ -357,24 +403,19 @@ const FeetBack = () => {
                                 TRUNG TÂM CHÍNH TRỊ
                               </a>
                             </div>
-                          </li>
-                          <li className="menutop menutop-index-10 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-                                target="_self"
-                                onClick={() => {
-                                  handleCategories("HÌNH ẢNH");
-                                }}
-                              >
-                                HÌNH ẢNH
-                              </a>
+                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
+                                  <ul className="nav nav-pills">
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch khai giảng</a></li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch bế giảng</a>
+                                    </li>
+                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
+                                        href="#" role="button" aria-expanded="false" data-toggle="">Tài liệu</a></li>
+                                  </ul>
                             </div>
                           </li>
-                          <li className="menutop menutop-index-11 menutop-LV1">
+                          <li className="menutop menutop-index-8 menutop-LV1">
                             <div
                               className="content content-LV1"
                               style={{ cursor: "pointer" }}
@@ -382,7 +423,32 @@ const FeetBack = () => {
                               <a
                                 className="contentlink contentlink-LV1"
                                 href="pages/feetback"
-                                 
+                              >
+                                VỀ KRÔNG ANA
+                              </a>
+                            </div>
+                          </li>
+                          <li className="menutop menutop-index-9 menutop-LV1">
+                            <div
+                              className="content content-LV1"
+                              style={{ cursor: "pointer" }}
+                            >
+                              <a
+                                className="contentlink contentlink-LV1"
+                                href="pages/feetback"
+                              >
+                                TIN ẢNH
+                              </a>
+                            </div>
+                          </li>
+                          <li className="menutop menutop-index-8 menutop-LV1">
+                            <div
+                              className="content content-LV1"
+                              style={{ cursor: "pointer" }}
+                            >
+                              <a
+                                className="contentlink contentlink-LV1"
+                                href="pages/feetback"
                               >
                                 GÓP Ý
                               </a>
