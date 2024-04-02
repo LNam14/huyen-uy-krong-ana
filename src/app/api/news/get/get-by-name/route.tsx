@@ -8,15 +8,27 @@ export async function POST(req: any) {
     const requestBody = await req.json().then((requestBody: any) => {
       body = requestBody;
     });
-    if (body) {
-      const result: any = await excuteQuery(
-        "SELECT * FROM bantin WHERE TenDanhMuc = ? ORDER BY createDate DESC",
-        [body["TenDanhMuc"]]
-      );
+
+    if (body && body["IsDanhMuc"] && body["TenDanhMuc"]) {
+      let query = "";
+      let queryParams = [];
+
+      if (body["IsDanhMuc"] === body["TenDanhMuc"]) {
+        query = "SELECT * FROM bantin WHERE IsDanhMuc = ? ORDER BY createDate DESC";
+        queryParams = [body["IsDanhMuc"]];
+      } else {
+        query = "SELECT * FROM bantin WHERE TenDanhMuc = ? ORDER BY createDate DESC";
+        queryParams = [body["TenDanhMuc"]];
+      }
+
+      console.log([body["TenDanhMuc"]], [body["IsDanhMuc"]]); // Log cái này để kiểm tra dữ liệu thực tế bạn nhận được
+
+      const result: any = await excuteQuery(query, queryParams);
 
       const formattedResult = result.map((item: any) => ({
         ID: item.ID,
         TenDanhMuc: item.TenDanhMuc,
+        IsDanhMuc: item.IsDanhMuc,
         createBy: item.createBy,
         TieuDeChinh: item.TieuDeChinh,
         TieuDePhu: item.TieuDePhu,
@@ -30,7 +42,7 @@ export async function POST(req: any) {
 
       return new Response(JSON.stringify(formattedResult), { status: 200 });
     } else {
-      return new Response("Missing body data", { status: 400 });
+      return new Response("IsDanhMuc and TenDanhMuc are required", { status: 400 });
     }
   } catch (error) {
     console.log(error);

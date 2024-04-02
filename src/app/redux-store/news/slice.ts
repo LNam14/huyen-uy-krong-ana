@@ -34,7 +34,8 @@ export const getNewsByCategory = createAsyncThunk(
       const response = await axios.post("/api/news/get/get-by-name", {
         ...data,
       });
-
+      console.log("response.data", data);
+      
       return response.data;
     } catch (error: any) {
       throw error.response?.data || error.message;

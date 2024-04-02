@@ -7,29 +7,24 @@ export async function GET(req: any) {
 
   try {
     const categoryList: any = await excuteQuery(
-      "SELECT TenDanhMuc FROM danhmuc",
+      "SELECT ID, TenDanhMuc FROM danhmuc",
       []
     );
     const result: any = [];
     for (let i = 0; i < categoryList.length; i++) {
       const category: any = categoryList[i];
+      category.sub = [];
 
-      if (
-        category.TenDanhMuc === "TIN ẢNH" ||
-        category.TenDanhMuc === "NÉT ĐẸP KRÔNG ANA"
-      ) {
-        category.news = [];
-        let newsList: any = await excuteQuery(
-          "SELECT * FROM bantin WHERE IsDanhMuc = ? AND TrangThai = 'Đã xuất bản'",
-          [category.TenDanhMuc]
-        );
+      let newsList: any = await excuteQuery(
+        "SELECT ID, TenDanhMuc FROM danhmucphu WHERE ID_DanhMuc = ?",
+        [category.ID]
+      );
 
-        category.news = newsList.sort((a: any, b: any) =>
-          moment(b.createDate).diff(moment(a.createDate))
-        );
+      category.sub = newsList
+      console.log("Ss", categoryList);
 
-        result.push(category);
-      }
+      result.push(category);
+
     }
 
     return new Response(JSON.stringify(result), { status: 200 });

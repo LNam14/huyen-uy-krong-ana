@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import loginReducer from "./login/slice";
 import userReducer from "./users/slice";
 import categoryReducer from "./category/slice";
+import categorySubReducer from "./category-sub/slice";
 import newsReducer from "./news/slice";
 import homeReducer from "./home/slice";
 import logoRuducer from "./logo/slice";
@@ -9,11 +10,13 @@ import bannerReducer from "./banner/slice";
 import rightReducer from "./right/slice";
 import topReducer from "./top/slice";
 import viewReducer from "./update-view/slice";
+import menuReducer from "./menu/slice";
 export const store = configureStore({
   reducer: {
     loginState: loginReducer,
     userState: userReducer,
     categoryState: categoryReducer,
+    categorySubState: categorySubReducer,
     newsState: newsReducer,
     homeState: homeReducer,
     bannerState: bannerReducer,
@@ -21,6 +24,7 @@ export const store = configureStore({
     rightState: rightReducer,
     topState: topReducer,
     viewState: viewReducer,
+    menuState: menuReducer,
   },
 });
 

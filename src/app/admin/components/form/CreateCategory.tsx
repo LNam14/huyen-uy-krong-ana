@@ -27,7 +27,7 @@ const CreateCategory = ({
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setData((prevData) => ({ ...prevData, [name]: value }));
+    setData((prevData) => ({ ...prevData, [name]: value.toUpperCase() }));
   };
 
   const isCategoryExists = (categoryName: string) => {
@@ -76,7 +76,7 @@ const CreateCategory = ({
           fullWidth
           label="Tên Danh Mục"
           name="TenDanhMuc"
-          value={data.TenDanhMuc}
+          value={data.TenDanhMuc.toUpperCase()}
           onChange={handleInputChange}
           margin="normal"
           size="small"

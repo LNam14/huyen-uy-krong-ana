@@ -118,11 +118,17 @@ const Home = () => {
     localStorage.setItem("newsItems", JSON.stringify(newsItems));
     router.push(`/pages/details-news`);
   };
- const handleFeetBack = () => {
-   window.location.href = `/pages/feetback`;
+  const handleFeetBack = () => {
+    window.location.href = `/pages/feetback`;
   };
   const handleCategories = (category: any) => {
     localStorage.setItem("category", JSON.stringify(category));
+    localStorage.setItem("isCategory", JSON.stringify(category));
+    router.push(`/pages/categories`);
+  };
+  const handleIsCategories = (category: any, isCategory: any) => {
+    localStorage.setItem("category", JSON.stringify(category));
+    localStorage.setItem("isCategory", JSON.stringify(isCategory));
     router.push(`/pages/categories`);
   };
   const sliderRef = useRef<Slider>(null);
@@ -167,20 +173,20 @@ const Home = () => {
       <head>
         <title>CỔNG THÔNG TIN ĐIỆN TỬ BAN TUYÊN GIÁO HUYỆN ỦY KRÔNG ANA</title>
       </head>
-      <body className="mas-portal v2" style={{ minHeight: 1650 }}>
-      <header>
-        <div className="logo-reponsive">
-        {logoListState &&
-                      logoListState.map((item: LogoItem, index: number) => (
-                        <img
-                        className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
-                          key={index}
-                         
-                          src={item.image}
-                          
-                        />
-                      ))}
-        </div>
+      <body className="mas-portal v2">
+        <header>
+          <div className="logo-reponsive">
+            {logoListState &&
+              logoListState.map((item: LogoItem, index: number) => (
+                <img
+                  className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
+                  key={index}
+
+                  src={item.image}
+
+                />
+              ))}
+          </div>
           <nav
             id="lv-navbar"
             className="navbar navbar-default lv-navbar-no-submenu"
@@ -194,11 +200,11 @@ const Home = () => {
                     {logoListState &&
                       logoListState.map((item: LogoItem, index: number) => (
                         <img
-                        className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
+                          className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
                           key={index}
                           alt=""
                           src={item.image}
-                          
+
                         />
                       ))}
                   </a>
@@ -214,18 +220,18 @@ const Home = () => {
               </div>
             </div>
             <div className="lv-menu-top-full">
-            <button type="button" className={`navbar-toggle ${menuOpen ? '' : 'collapsed'}`} onClick={toggleMenu}>
-            {menuOpen ? <div style={{ color: '#D9281C', fontSize: '24px', marginTop: -10}} className="close-icon">X</div> : (
-          <>
-            <span className="icon-bar"></span> 
-            <span className="icon-bar"></span>
-            <span className="icon-bar"></span>
-          </>
-        )}</button>
-                        
+              <button type="button" className={`navbar-toggle ${menuOpen ? '' : 'collapsed'}`} onClick={toggleMenu}>
+                {menuOpen ? <div style={{ color: '#D9281C', fontSize: '24px', marginTop: -10 }} className="close-icon">X</div> : (
+                  <>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                  </>
+                )}</button>
+
               <div className="lv-menu-top">
                 <div
-                 className={`navbar-collapse collapse ${menuOpen ? 'in' : ''}`}
+                  className={`navbar-collapse collapse ${menuOpen ? 'in' : ''}`}
                   id="bs-example-navbar-collapse-1"
                 >
                   <div id="ctl00_g_c5efd52c_bd0f_47a3_a92f_799f15324153">
@@ -239,8 +245,8 @@ const Home = () => {
                       style={{ display: "block" }}
                     >
                       <div className="containerdiv containerdiv-LV1 nobackground hasChildren">
-                       <ul className="container container-LV1">
-                         
+                        <ul className="container container-LV1">
+
                           <li className="menutop menutop-index-2 menutop-LV1 hasChildren hasChildrenLV1 ">
                             <div className="content content-LV1 hasChildren hasChildrenLV1 ">
                               <div className=" hasChildren hasChildrenLV1 contenticon contenticon-LV1 divnoicon noicon">
@@ -252,7 +258,7 @@ const Home = () => {
                               </div>
                               <a
                                 className="contentlink contentlink-LV1 hasChildren hasChildrenLV1 "
-                                target="_self"
+
                                 href="/"
                               >
                                 TRANG CHỦ
@@ -260,24 +266,33 @@ const Home = () => {
                             </div>
                           </li>
                           <li className="menutop menutop-index-3 menutop-LV1">
-                                <div className="content content-LV1">
-                                  <div className="contenticon contenticon-LV1 divnoicon noicon"><img src="" title="Thời sự"
-                                      className="contenticonimg contenticonimg-LV1 imgnoicon noicon" /></div><a
-                                    className="contentlink contentlink-LV1" target="_self" href="#">Giới thiệu</a>
-                                </div>
-                                <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                                  <ul className="nav nav-pills">
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lãnh đạo Ban Tuyên giáo</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Chức năng – Nhiệm vụ</a>
-                                    </li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lãnh đạo Ban tuyên giáo qua các thời kỳ</a></li>
-                                   
-                                  </ul>
-                                </div>
-                              </li>
+                            <div className="content content-LV1">
+                              <a
+                                style={{ cursor: "pointer" }}
+                                className="contentlink contentlink-LV1" onClick={() => {
+                                  handleCategories("GIỚI THIỆU");
+                                }}>Giới thiệu</a>
+                            </div>
+                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
+                              <ul className="nav nav-pills">
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lãnh đạo Ban Tuyên giáo", "GIỚI THIỆU");
+                                  }}>Lãnh đạo Ban Tuyên giáo</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Chức năng – Nhiệm vụ", "GIỚI THIỆU");
+                                  }}>Chức năng – Nhiệm vụ</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lãnh đạo Ban tuyên giáo qua các thời kỳ", "GIỚI THIỆU");
+                                  }}>Lãnh đạo Ban tuyên giáo qua các thời kỳ</a></li>
+
+                              </ul>
+                            </div>
+                          </li>
                           <li className="menutop menutop-index-4 menutop-LV1 hasChildren hasChildrenLV1 ">
                             <div
                               className="content content-LV1 hasChildren hasChildrenLV1 "
@@ -285,7 +300,7 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1 hasChildren hasChildrenLV1 "
-                                target="_self"
+
                                 onClick={() => {
                                   handleCategories("TIN TỨC - SỰ KIỆN");
                                 }}
@@ -293,7 +308,7 @@ const Home = () => {
                                 TIN TỨC - SỰ KIỆN
                               </a>
                             </div>
-                            
+
                           </li>
                           <li className="menutop menutop-index-5 menutop-LV1">
                             <div
@@ -302,7 +317,7 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1"
-                                target="_self"
+
                                 onClick={() => {
                                   handleCategories("HOẠT ĐỘNG TUYÊN GIÁO");
                                 }}
@@ -311,27 +326,44 @@ const Home = () => {
                               </a>
                             </div>
                             <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                                  <ul className="nav nav-pills">
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Tuyên truyền – Báo chí – Xuất bản</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Nghiên cứu dư luận xã hội</a>
-                                    </li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lý luận chính trị</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch sử Đảng</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Khoa giáo</a>
-                                    </li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Văn hóa – Văn nghệ</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Thư viện ảnh</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Video - Clip</a>
-                                    </li>
-                                  </ul>
+                              <ul className="nav nav-pills">
+                                <li className="dropdown">
+                                  <a className="dropdown-toggle"
+                                    role="button" onClick={() => {
+                                      handleIsCategories("Tuyên truyền – Báo chí – Xuất bản", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                    }}>Tuyên truyền – Báo chí – Xuất bản</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Nghiên cứu dư luận xã hội", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Nghiên cứu dư luận xã hội</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lý luận chính trị", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Lý luận chính trị</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lịch sử Đảng", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Lịch sử Đảng</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Khoa giáo", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Khoa giáo</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Văn hóa – Văn nghệ", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Văn hóa – Văn nghệ</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Thư viện ảnh", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Thư viện ảnh</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Video - Clip", "HOẠT ĐỘNG TUYÊN GIÁO");
+                                  }}>Video - Clip</a>
+                                </li>
+                              </ul>
                             </div>
                           </li>
                           <li className="menutop menutop-index-6 menutop-LV1 hasChildren hasChildrenLV1 ">
@@ -341,7 +373,7 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1 hasChildren hasChildrenLV1 "
-                                target="_self"
+
                                 onClick={() => {
                                   handleCategories("THÔNG TIN TƯ LIỆU");
                                 }}
@@ -350,20 +382,30 @@ const Home = () => {
                               </a>
                             </div>
                             <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                                  <ul className="nav nav-pills">
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Kỹ năng</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Nghiệp vụ</a>
-                                    </li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Tài liệu tuyên truyền</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Tư liệu ngành tuyên giáo</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản</a>
-                                    </li>
-                                  </ul>
+                              <ul className="nav nav-pills">
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Kỹ năng", "THÔNG TIN TƯ LIỆU");
+                                  }}>Kỹ năng</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Nghiệp vụ", "THÔNG TIN TƯ LIỆU");
+                                  }}>Nghiệp vụ</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Tài liệu tuyên truyền", "THÔNG TIN TƯ LIỆU");
+                                  }}>Tài liệu tuyên truyền</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Tư liệu ngành tuyên giáo", "THÔNG TIN TƯ LIỆU");
+                                  }}>Tư liệu ngành tuyên giáo</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản", "THÔNG TIN TƯ LIỆU");
+                                  }}>Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản</a>
+                                </li>
+                              </ul>
                             </div>
                           </li>
                           <li className="menutop menutop-index-7 menutop-LV1">
@@ -373,7 +415,7 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1"
-                                target="_self"
+
                                 onClick={() => {
                                   handleCategories("TRUNG TÂM CHÍNH TRỊ");
                                 }}
@@ -382,15 +424,21 @@ const Home = () => {
                               </a>
                             </div>
                             <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                                  <ul className="nav nav-pills">
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch khai giảng</a></li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Lịch bế giảng</a>
-                                    </li>
-                                    <li role="presentation" className="dropdown"><a className="dropdown-toggle" target="_self"
-                                        href="#" role="button" aria-expanded="false" data-toggle="">Tài liệu</a></li>
-                                  </ul>
+                              <ul className="nav nav-pills">
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lịch khai giảng", "TRUNG TÂM CHÍNH TRỊ");
+                                  }}>Lịch khai giảng</a></li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Lịch bế giảng", "TRUNG TÂM CHÍNH TRỊ");
+                                  }}>Lịch bế giảng</a>
+                                </li>
+                                <li className="dropdown"><a className="dropdown-toggle"
+                                  role="button" onClick={() => {
+                                    handleIsCategories("Tài liệu", "TRUNG TÂM CHÍNH TRỊ");
+                                  }}>Tài liệu</a></li>
+                              </ul>
                             </div>
                           </li>
                           <li className="menutop menutop-index-8 menutop-LV1">
@@ -400,9 +448,11 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1"
-                                href="pages/feetback"
+                                onClick={() => {
+                                  handleCategories("NÉT ĐẸP KRÔNG ANA");
+                                }}
                               >
-                                VỀ KRÔNG ANA
+                                NÉT ĐẸP KRÔNG ANA
                               </a>
                             </div>
                           </li>
@@ -413,7 +463,9 @@ const Home = () => {
                             >
                               <a
                                 className="contentlink contentlink-LV1"
-                                href="pages/feetback"
+                                onClick={() => {
+                                  handleCategories("TIN ẢNH");
+                                }}
                               >
                                 TIN ẢNH
                               </a>
@@ -439,7 +491,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-         
+
           </nav>
           <div className="search-tool">
             <div className="row">
@@ -468,9 +520,8 @@ const Home = () => {
             </div>
           </div>
         </header>
-
         <div className="portalMain homeMain">
-          <div className="portal-left">
+          <div className="portal-left" style={{ minHeight: 1060 }}>
             <div className="home1">
               <div className="ms-webpart-zone ms-fullWidth">
                 <div
@@ -515,9 +566,9 @@ const Home = () => {
                                     <div className="div-info-main">
                                       {hoveredIndex !== null
                                         ? topListState[hoveredIndex]
-                                            ?.TieuDeChinh
+                                          ?.TieuDeChinh
                                         : topListState[currentIndex]
-                                            ?.TieuDeChinh}
+                                          ?.TieuDeChinh}
                                     </div>
                                   </a>
                                 </div>
@@ -548,7 +599,7 @@ const Home = () => {
                                     </a>
                                   </li>
                                 </div>
-                              )):null}
+                              )) : null}
                             </div>
                           </div>
                         </div>
@@ -684,7 +735,7 @@ const Home = () => {
                       </div>
                       <div className="ms-PartSpacingVertical"></div>
                     </div>
-                  )):null}
+                  )) : null}
                 </div>
               </div>
             </div>
@@ -693,66 +744,56 @@ const Home = () => {
             {rightListState.map((items: any, index: number) => (
               <div className="right1" key={index}>
                 <div className="ms-webpart-zone ms-fullWidth">
-                  <div
-                    id="MSOZoneCell_WebPartWPQ12"
-                    className="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical ms-fullWidth "
-                  >
+                  <div id="MSOZoneCell_WebPartWPQ12" className="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical ms-fullWidth ">
                     <div className="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
-                      <div
-                        id="WebPartWPQ12"
-                        style={{ width: "100%" }}
-                        className="ms-WPBody "
-                      >
+                      <div id="WebPartWPQ12" style={{ width: "100%" }} className="ms-WPBody ">
                         <div className="ms-rtestate-field">
-                          <div
-                            className="post-category-slide ng-scope"
-                            id="CapUy"
-                            ng-controller="CapUy"
-                          >
+                          <div className="post-category-slide ng-scope" id="CapUy" ng-controller="CapUy">
                             <div className="lv-category">
                               <a>{items.TenDanhMuc}</a>
                             </div>
-                            <Slider
-                              ref={sliderRef}
-                              className="nbs-flexisel-container"
-                              dots={false}
-                              infinite={true}
-                              speed={500}
-                              slidesToShow={1}
-                              slidesToScroll={1}
-                            >
-                              {items.news.map(
-                                (newsItem: any, newsIndex: number) => (
-                                  <div
-                                    key={newsIndex}
-                                    className={`nbs-flexisel-item ${
-                                      newsIndex > 0 ? "slide" : ""
-                                    }`}
-                                    onClick={() => {
-                                      handleDetailNews(newsItem);
-                                    }}
+                            {items.news.length > 1 ? (
+                              <Slider
+                                ref={sliderRef}
+                                className="nbs-flexisel-container"
+                                dots={false}
+                                infinite={true}
+                                speed={500}
+                                slidesToShow={1}
+                                slidesToScroll={1}
+                              >
+                                {items.news.map((newsItem: any, newsIndex: number) => (
+                                  <div key={newsIndex} className={`nbs-flexisel-item ${newsIndex > 0 ? "slide" : ""}`}
+                                    onClick={() => { handleDetailNews(newsItem); }}
                                   >
                                     <a>
                                       <div className="divimg">
-                                        <img
-                                          className="img-responsive"
-                                          src={newsItem.HinhAnh}
-                                          alt={`Image ${newsIndex}`}
-                                        />
+                                        <img className="img-responsive" src={newsItem.HinhAnh} alt={`Image ${newsIndex}`} />
                                       </div>
                                     </a>
-                                    <div
-                                      style={{
-                                        textAlign: "center",
-                                        padding: 10,
-                                      }}
-                                    >
+                                    <div style={{ textAlign: "center", padding: 10 }}>
                                       <span>{newsItem.TieuDeChinh}</span>
                                     </div>
                                   </div>
-                                )
-                              )}
-                            </Slider>
+                                ))}
+                              </Slider>
+                            ) : (
+                              // Render single news item without slider
+                              items.news.map((newsItem: any, newsIndex: number) => (
+                                <div key={newsIndex} className="single-news-item"
+                                  onClick={() => { handleDetailNews(newsItem); }}
+                                >
+                                  <a>
+                                    <div className="divimg">
+                                      <img className="img-responsive" src={newsItem.HinhAnh} alt={`Image ${newsIndex}`} />
+                                    </div>
+                                  </a>
+                                  <div style={{ textAlign: "center", padding: 10 }}>
+                                    <span>{newsItem.TieuDeChinh}</span>
+                                  </div>
+                                </div>
+                              ))
+                            )}
                           </div>
                         </div>
                       </div>
@@ -761,6 +802,7 @@ const Home = () => {
                 </div>
               </div>
             ))}
+
 
             <div className="right4">
               <div className="ms-webpart-zone ms-fullWidth">
@@ -797,7 +839,7 @@ const Home = () => {
                             className="banner-img ng-scope"
                             ng-repeat="dataItem in DataHtml track by $index"
                           >
-                            <a target="_self">
+                            <a >
                               <img
                                 className="img-responsive"
                                 alt=""
@@ -868,32 +910,31 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <footer>
-          <div className="footer">
-            <div className="footer-content row" style={{ width: "75%" }}>
-              <div id="ctl00_g_91ea13ce_902e_4f6e_b075_5bed268b3192">
-                <div>
-                  <strong style={{ fontFamily: "tahoma" }}>
-                    CỔNG THÔNG TIN ĐIỆN TỬ BAN TUYÊN GIÁO HUYỆN ỦY KRÔNG ANA
-                  </strong>
-                </div>
-                <div>
-                  <strong>Trụ sở&#58;</strong>&#160;UBND huyện Krông Ana - 94
-                  Nguyễn Tất Thành, Thị trấn Buôn Trấp, huyện Krông Ana, tỉnh
-                  Đắk Lắk
-                  <br />
-                  <strong>Điện thoại&#58;</strong> 0262 3637026&#160;&#160;
-                  <strong>
-                    <br />
-                  </strong>
-                </div>
-                <div>
-                  <strong>Email&#58;</strong> banbientap@krongana.daklak.gov.vn
-                </div>
-                Bản quyền thuộc Ủy Ban Nhân Dân Huyện Krông Ana.
-                <br />
-                Ghi rõ nguồn khi phát hành thông tin từ nguồn này. ​
+
+        <footer className="footer">
+          <div className="footer-content row" style={{ width: "75%" }}>
+            <div id="ctl00_g_91ea13ce_902e_4f6e_b075_5bed268b3192">
+              <div>
+                <strong style={{ fontFamily: "tahoma" }}>
+                  CỔNG THÔNG TIN ĐIỆN TỬ BAN TUYÊN GIÁO HUYỆN ỦY KRÔNG ANA
+                </strong>
               </div>
+              <div>
+                <strong>Trụ sở&#58;</strong>&#160;UBND huyện Krông Ana - 94
+                Nguyễn Tất Thành, Thị trấn Buôn Trấp, huyện Krông Ana, tỉnh
+                Đắk Lắk
+                <br />
+                <strong>Điện thoại&#58;</strong> 0262 3637026&#160;&#160;
+                <strong>
+                  <br />
+                </strong>
+              </div>
+              <div>
+                <strong>Email&#58;</strong> banbientap@krongana.daklak.gov.vn
+              </div>
+              Bản quyền thuộc Ủy Ban Nhân Dân Huyện Krông Ana.
+              <br />
+              Ghi rõ nguồn khi phát hành thông tin từ nguồn này.
             </div>
           </div>
         </footer>
