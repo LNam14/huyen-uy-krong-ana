@@ -21,6 +21,7 @@ import {
   getDownloadURL,
   uploadBytes,
 } from "firebase/storage";
+import { getMenu, getMenuList } from "@/app/redux-store/menu/slice";
 
 interface LooseObject {
   [key: string]: any;
@@ -29,20 +30,22 @@ interface LooseObject {
 interface CategoryItem {
   ID: number;
   TenDanhMuc: string;
-  CreateBy: string;
-  CreateDate: string;
+  sub?: {
+    ID: number;
+    TenDanhMuc: string;
+  };
 }
 
 const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
   const dispatch = useAppDispatch();
-  const categoryList: CategoryItem[] = useAppSelector(getCategoryList);
+  const categoryList: CategoryItem[] = useAppSelector(getMenuList);
   const [categoryListState, setCategoryListState] = useState<CategoryItem[]>(
     []
   );
 
   useEffect(() => {
     const asyncCall = async () => {
-      await dispatch(getCategory());
+      await dispatch(getMenu());
     };
     asyncCall();
   }, []);
@@ -56,6 +59,7 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
   const username = getCookie("username");
   const [data, setData] = useState<LooseObject>({
     TenDanhMuc: "",
+    IsDanhMuc: "",
     CreateBy: username,
     TacGia: "",
     TieuDeChinh: "",
@@ -74,7 +78,7 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
     if (files && files[0] && files[0].size < 1000000) {
       const selectedFile = files[0];
       const imageUrl = URL.createObjectURL(selectedFile);
-      setImageUrl(imageUrl); 
+      setImageUrl(imageUrl);
       setImage(files[0]);
     } else {
       console.error("Error: File not found or file size is too large.");
@@ -86,7 +90,7 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
       if (image) {
         const storageRef = ref((await storage).storage, `images/${image.name}`);
         await uploadBytes(storageRef, image);
-        
+
         setIsUploading(true);
         const imageUrl = await getDownloadURL(storageRef);
         console.log("Image uploaded. Download URL:", imageUrl);
@@ -96,6 +100,7 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
         });
         setIsUploading(false);
         setIsImageConfirmed(true);
+        alert("Xác nhận ảnh thành công !!")
         return imageUrl;
       }
 
@@ -109,9 +114,9 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
   const handleSave = async () => {
     if (!isImageConfirmed) {
       alert("Vui lòng xác nhận ảnh");
-      return; 
+      return;
     }
-  
+    setIsImageConfirmed(false)
     await dispatch(createNews({ data }));
     await dispatch(getNewsWait());
     closeForm();
@@ -125,7 +130,21 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
       NoiDung: content,
     });
   };
+  const handleCategoryChange = (e: any) => {
+    const selectedValue = e.target.value;
+    let selectedCategory: any = null;
+    categoryListState.forEach(category => {
+      if (category.sub && Array.isArray(category.sub) && category.sub.find(sub => sub.TenDanhMuc === selectedValue)) {
+        selectedCategory = category;
+      }
+    });
 
+    setData({
+      ...data,
+      TenDanhMuc: selectedValue,
+      IsDanhMuc: selectedCategory ? selectedCategory.TenDanhMuc : selectedValue
+    });
+  };
   return (
     <Modal open={open} onClose={closeForm}>
       <Box
@@ -180,25 +199,33 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
         </FormLabel>
         <FormLabel>
           Danh mục
-          <Select
-            fullWidth
+          <select
             name="TenDanhMuc"
-            size="small"
-            sx={{ marginBottom: 2 }}
+            style={{ marginBottom: 2, width: "100%", height: 40 }}
             value={data.TenDanhMuc}
-            onChange={(e) =>
-              setData({
-                ...data,
-                TenDanhMuc: e.target.value as string,
-              })
-            }
-          >
+            onChange={handleCategoryChange}>
             {categoryListState.map((category) => (
-              <MenuItem key={category.ID} value={category.TenDanhMuc}>
-                {category.TenDanhMuc}
-              </MenuItem>
+              <optgroup key={category.ID} label={category.TenDanhMuc}>
+                <option
+                  key={category.ID}
+                  value={category.TenDanhMuc}
+                >
+                  {category.TenDanhMuc}
+                </option>
+                {category.sub && Array.isArray(category.sub) && category.sub.map((subCategory) => (
+                  <option
+                    key={subCategory.ID}
+                    value={subCategory.TenDanhMuc}
+                  >
+                    {subCategory.TenDanhMuc}
+                  </option>
+
+                ))}
+              </optgroup>
             ))}
-          </Select>
+
+          </select>
+
         </FormLabel>
         <FormLabel>
           Hình ảnh
@@ -207,19 +234,19 @@ const CreateNews = ({ open, closeForm }: { open: boolean; closeForm: any }) => {
             style={{ width: '100%', marginBottom: 10 }}
             onChange={(e) => handleSelectFile(e.target.files)}
           />
-           {imageUrl && (
-    <div>
-      <img src={imageUrl} alt="Selected" style={{marginBottom: "10px", maxWidth: '100%', maxHeight: '200px', marginTop: '10px', display: "flex", flexDirection: "column"}} />
-      <Button sx={{marginBottom: "10px"}} variant="contained" color="success" onClick={() => handleImageUpload()}>Xác nhận ảnh</Button>
-    </div>
-  )}
+          {imageUrl && (
+            <div>
+              <img src={imageUrl} alt="Selected" style={{ marginBottom: "10px", maxWidth: '100%', maxHeight: '200px', marginTop: '10px', display: "flex", flexDirection: "column" }} />
+              {!isImageConfirmed && <Button sx={{ marginBottom: "10px" }} variant="contained" color="success" onClick={() => handleImageUpload()}>Xác nhận ảnh</Button>}
+            </div>
+          )}
         </FormLabel>
         <FormLabel >
           Nội dung
           <QuillEditor onContentChange={handleContentChange} />
         </FormLabel>
         <Box display={"flex"} justifyContent={"space-between"} marginTop={2}>
-         
+
           <Button
             variant="contained"
             color="success"

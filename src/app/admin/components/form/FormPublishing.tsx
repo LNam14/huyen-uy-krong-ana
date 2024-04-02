@@ -83,13 +83,10 @@ const FormWFA = ({
           maxHeight: "80vh",
         }}
       >
-        <Typography textAlign={"center"} fontSize={20} fontWeight={500}>
-          Bản tin
-        </Typography>
-        <Box></Box>
+
         <Typography
           sx={{
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: "bold",
             borderBottom: "2px solid #d9d9d9",
             marginBottom: 1,
@@ -97,7 +94,7 @@ const FormWFA = ({
             fontFamily: "Times New Roman, sans-serif",
           }}
         >
-          {data.TenDanhMuc}
+          {data.TenDanhMuc.toUpperCase()}
         </Typography>
         <Typography
           sx={{

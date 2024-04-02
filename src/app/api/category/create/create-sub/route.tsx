@@ -1,5 +1,4 @@
 import excuteQuery from "@/app/db/db";
-import API_KEY from "../../api_key";
 
 export async function POST(req: any) {
   // const requestHeaders = new Headers(req.headers);
@@ -17,20 +16,9 @@ export async function POST(req: any) {
     }
 
     const result = await excuteQuery(
-      "INSERT INTO bantin (CreateBy, TacGia, TieuDeChinh, TieuDePhu, TenDanhMuc, IsDanhMuc, NoiDung, HinhAnh) VALUES (?,?,?,?,?,?,?,?);",
-      [
-        body["CreateBy"],
-        body["TacGia"],
-        body["TieuDeChinh"],
-        body["TieuDePhu"],
-        body["TenDanhMuc"],
-        body["IsDanhMuc"],
-        body["NoiDung"],
-        body["HinhAnh"],
-      ]
+      "INSERT INTO danhmucphu (TenDanhMuc, CreateBy, ID_DanhMuc) VALUES (?,?,?);",
+      [body["TenDanhMuc"], body["CreateBy"], body["ID_DanhMuc"]]
     );
-
-    console.log("result", result);
 
     return new Response(JSON.stringify({ result }), { status: 200 });
   } catch (error) {

@@ -17,11 +17,12 @@ export async function GET(req: any) {
 
       // Kiểm tra nếu tên danh mục không phải là "KRÔNG ANA" hoặc "TIN ẢNH" thì mới thêm vào kết quả
       if (
-        category.TenDanhMuc !== "KRÔNG ANA" &&
-        category.TenDanhMuc !== "TIN ẢNH"
+        category.TenDanhMuc !== "NÉT ĐẸP KRÔNG ANA" &&
+        category.TenDanhMuc !== "TIN ẢNH" &&
+        category.TenDanhMuc !== "GIỚI THIỆU"
       ) {
         let newsList: any = await excuteQuery(
-          "SELECT * FROM bantin WHERE TenDanhMuc = ? AND TrangThai = 'Đã xuất bản'",
+          "SELECT * FROM bantin WHERE IsDanhMuc = ? AND TrangThai = 'Đã xuất bản'",
           [category.TenDanhMuc]
         );
 
