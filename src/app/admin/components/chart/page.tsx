@@ -1,11 +1,13 @@
-
 "use client"
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
-import { ChartComponentProps } from './type';
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
+const ChartComponent = ({
+    data,
+}: {
+    data: number[];
+}) => {
     const chartRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {

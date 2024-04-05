@@ -2,10 +2,12 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
-import { LineComponentProps } from './type';
 
-
-const LineComponent: React.FC<LineComponentProps> = ({ data }) => {
+const LineComponent = ({
+    data,
+}: {
+    data: number[];
+}) => {
     const LineRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
