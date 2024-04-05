@@ -3,11 +3,10 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
 
-const LineComponent = ({
-    data,
-}: {
-    data: number[];
-}) => {
+interface Props {
+    data: number[]
+}
+const LineComponent = ({ data }: Props) => {
     const LineRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
