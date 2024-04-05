@@ -38,6 +38,7 @@ interface CategoryItem {
   TenDanhMuc: string;
   CreateBy: string;
   CreateDate: string;
+  LastUpdate: string;
 }
 interface LooseObject {
   [key: string]: any;
@@ -133,13 +134,13 @@ const Category = () => {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={1}>
       <Grid item xs={12} lg={12}>
-        <BaseCard title="Danh mục">
+        <BaseCard title="Quản Lý Danh Mục">
           <TableContainer
             sx={{
               width: {
-                xs: "274px",
+                xs: "100%",
                 sm: "100%",
               },
             }}
@@ -243,12 +244,21 @@ const Category = () => {
                     </Typography>
                   </TableCell>
                   <TableCell>
+                    <Typography
+                      color="textSecondary"
+                      variant="h6"
+                      fontWeight={"bold"}
+                    >
+                      Lần cập nhật cuối
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
                     <Typography color="textSecondary" variant="h6"></Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
               {Array.isArray(currentCategoryList) &&
-              currentCategoryList.length > 0 ? (
+                currentCategoryList.length > 0 ? (
                 <TableBody>
                   {currentCategoryList.map(
                     (category: CategoryItem, i: number) => (
@@ -271,6 +281,11 @@ const Category = () => {
                         <TableCell>
                           <Typography color="textSecondary" variant="h6">
                             {category.CreateDate}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography color="textSecondary" variant="h6">
+                            {category.LastUpdate}
                           </Typography>
                         </TableCell>
                         <TableCell>

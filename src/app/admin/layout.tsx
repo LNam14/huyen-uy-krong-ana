@@ -58,15 +58,14 @@ export default function RootLayout({ children }: Props) {
       />
       <PageWrapper className="page-wrapper">
         <Header toggleMobileSidebar={() => setMobileSidebarOpen(true)} />
-        <Container
+        <Box
           sx={{
-            paddingTop: "20px",
-            maxWidth: "1200px",
+            width: "100%",
           }}
         >
           <Box sx={{ minHeight: "calc(100vh - 170px)" }}>{children}</Box>
           <Footer />
-        </Container>
+        </Box>
       </PageWrapper>
     </MainWrapper>
   );

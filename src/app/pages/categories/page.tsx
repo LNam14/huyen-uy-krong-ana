@@ -22,6 +22,7 @@ import "./filesx/portal-congtinh.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getMenu, getMenuList } from "@/app/redux-store/menu/slice";
 interface HomeItem {
   TenDanhMuc: number;
 
@@ -58,7 +59,11 @@ interface BannerItem {
   ID: number;
   image: string;
 }
-
+interface MenuItem {
+  ID: number;
+  TenDanhMuc: string;
+  IsDanhMuc: string;
+}
 interface LooseObject {
   [key: string]: any;
 }
@@ -80,6 +85,9 @@ const Categories = () => {
   const rightList: HomeItem[] = useAppSelector(getRightList);
   const [rightListState, setRightListState] = useState<HomeItem[]>([]);
 
+
+  const menuList: MenuItem[] = useAppSelector(getMenuList);
+  const [menuListState, setMenuListState] = useState<MenuItem[]>([]);
   const [data, setData] = useState<LooseObject>({
     TenDanhMuc: "",
     IsDanhMuc: "",
@@ -90,9 +98,15 @@ const Categories = () => {
       await dispatch(getAllLogo());
       await dispatch(getAllBanner());
       await dispatch(getNewsRight());
+      await dispatch(getMenu());
     };
     asyncCall();
   }, []);
+  useEffect(() => {
+    if (menuList) {
+      setMenuListState(menuList);
+    }
+  }, [menuList]);
   useEffect(() => {
     if (rightList) {
       setRightListState(rightList);
@@ -213,7 +227,6 @@ const Categories = () => {
           <nav
             id="lv-navbar"
             className="navbar navbar-default lv-navbar-no-submenu"
-            role="navigation"
             style={{ backgroundColor: "#fff" }}
           >
             <div className="banner-content">
@@ -288,225 +301,46 @@ const Categories = () => {
                               </a>
                             </div>
                           </li>
-                          <li className="menutop menutop-index-3 menutop-LV1">
-                            <div className="content content-LV1">
-                              <a
-                                style={{ cursor: "pointer" }}
-                                className="contentlink contentlink-LV1" onClick={() => {
-                                  handleCategories("GIỚI THIỆU");
-                                }}>Giới thiệu</a>
-                            </div>
-                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                              <ul className="nav nav-pills">
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lãnh đạo Ban Tuyên giáo", "GIỚI THIỆU");
-                                  }}>Lãnh đạo Ban Tuyên giáo</a>
+                          {menuListState
+                            ? [...menuListState]
+                              .sort((a: any, b: any) => a.ID - b.ID)
+                              .map((items: any, index: number) => (
+                                <li className="menutop menutop-index-3 menutop-LV1" key={index}>
+                                  <div className="content content-LV1">
+                                    <a
+                                      style={{ cursor: "pointer" }}
+                                      className="contentlink contentlink-LV1"
+                                      onClick={() => {
+                                        handleCategories(items.TenDanhMuc);
+                                      }}
+                                    >
+                                      {items.TenDanhMuc}
+                                    </a>
+                                  </div>
+                                  <div className="containerdiv containerdiv-LV2 nobackground showChildren">
+                                    <ul className="nav nav-pills">
+                                      {items.sub
+                                        .map((newsItem: any, subIndex: number) => (
+                                          <li className="dropdown" key={subIndex}>
+                                            <a
+                                              style={{ cursor: "pointer" }}
+                                              className="dropdown-toggle"
+                                              onClick={() => {
+                                                handleIsCategories(
+                                                  newsItem.TenDanhMuc,
+                                                  items.TenDanhMuc
+                                                );
+                                              }}
+                                            >
+                                              {newsItem.TenDanhMuc}
+                                            </a>
+                                          </li>
+                                        ))}
+                                    </ul>
+                                  </div>
                                 </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Chức năng – Nhiệm vụ", "GIỚI THIỆU");
-                                  }}>Chức năng – Nhiệm vụ</a>
-                                </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lãnh đạo Ban tuyên giáo qua các thời kỳ", "GIỚI THIỆU");
-                                  }}>Lãnh đạo Ban tuyên giáo qua các thời kỳ</a></li>
-
-                              </ul>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-4 menutop-LV1 hasChildren hasChildrenLV1 ">
-                            <div
-                              className="content content-LV1 hasChildren hasChildrenLV1 "
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1 hasChildren hasChildrenLV1 "
-
-                                onClick={() => {
-                                  handleCategories("TIN TỨC - SỰ KIỆN");
-                                }}
-                              >
-                                TIN TỨC - SỰ KIỆN
-                              </a>
-                            </div>
-
-                          </li>
-                          <li className="menutop menutop-index-5 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-
-                                onClick={() => {
-                                  handleCategories("HOẠT ĐỘNG TUYÊN GIÁO");
-                                }}
-                              >
-                                HOẠT ĐỘNG TUYÊN GIÁO
-                              </a>
-                            </div>
-                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                              <ul className="nav nav-pills">
-                                <li className="dropdown">
-                                  <a className="dropdown-toggle"
-                                    role="button" onClick={() => {
-                                      handleIsCategories("Tuyên truyền – Báo chí – Xuất bản", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                    }}>Tuyên truyền – Báo chí – Xuất bản</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Nghiên cứu dư luận xã hội", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Nghiên cứu dư luận xã hội</a>
-                                </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lý luận chính trị", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Lý luận chính trị</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lịch sử Đảng", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Lịch sử Đảng</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Khoa giáo", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Khoa giáo</a>
-                                </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Văn hóa – Văn nghệ", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Văn hóa – Văn nghệ</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Thư viện ảnh", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Thư viện ảnh</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Video - Clip", "HOẠT ĐỘNG TUYÊN GIÁO");
-                                  }}>Video - Clip</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-6 menutop-LV1 hasChildren hasChildrenLV1 ">
-                            <div
-                              className="content content-LV1 hasChildren hasChildrenLV1 "
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1 hasChildren hasChildrenLV1 "
-
-                                onClick={() => {
-                                  handleCategories("THÔNG TIN TƯ LIỆU");
-                                }}
-                              >
-                                THÔNG TIN TƯ LIỆU
-                              </a>
-                            </div>
-                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                              <ul className="nav nav-pills">
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Kỹ năng", "THÔNG TIN TƯ LIỆU");
-                                  }}>Kỹ năng</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Nghiệp vụ", "THÔNG TIN TƯ LIỆU");
-                                  }}>Nghiệp vụ</a>
-                                </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Tài liệu tuyên truyền", "THÔNG TIN TƯ LIỆU");
-                                  }}>Tài liệu tuyên truyền</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Tư liệu ngành tuyên giáo", "THÔNG TIN TƯ LIỆU");
-                                  }}>Tư liệu ngành tuyên giáo</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản", "THÔNG TIN TƯ LIỆU");
-                                  }}>Ấn phẩm do Ban Tuyên giáo tỉnh Đắk Lắk xuất bản</a>
-                                </li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-7 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-
-                                onClick={() => {
-                                  handleCategories("TRUNG TÂM CHÍNH TRỊ");
-                                }}
-                              >
-                                TRUNG TÂM CHÍNH TRỊ
-                              </a>
-                            </div>
-                            <div className="containerdiv containerdiv-LV2 nobackground showChildren" >
-                              <ul className="nav nav-pills">
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lịch khai giảng", "TRUNG TÂM CHÍNH TRỊ");
-                                  }}>Lịch khai giảng</a></li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Lịch bế giảng", "TRUNG TÂM CHÍNH TRỊ");
-                                  }}>Lịch bế giảng</a>
-                                </li>
-                                <li className="dropdown"><a className="dropdown-toggle"
-                                  role="button" onClick={() => {
-                                    handleIsCategories("Tài liệu", "TRUNG TÂM CHÍNH TRỊ");
-                                  }}>Tài liệu</a></li>
-                              </ul>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-8 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-                                onClick={() => {
-                                  handleCategories("NÉT ĐẸP KRÔNG ANA");
-                                }}
-                              >
-                                NÉT ĐẸP KRÔNG ANA
-                              </a>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-9 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-                                onClick={() => {
-                                  handleCategories("TIN ẢNH");
-                                }}
-                              >
-                                TIN ẢNH
-                              </a>
-                            </div>
-                          </li>
-                          <li className="menutop menutop-index-8 menutop-LV1">
-                            <div
-                              className="content content-LV1"
-                              style={{ cursor: "pointer" }}
-                            >
-                              <a
-                                className="contentlink contentlink-LV1"
-                                href="pages/feetback"
-                              >
-                                GÓP Ý
-                              </a>
-                            </div>
-                          </li>
+                              ))
+                            : null}
                         </ul>
                       </div>
                     </div>

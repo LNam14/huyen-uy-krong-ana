@@ -1,5 +1,5 @@
 import excuteQuery from "../../db/db";
-import API_KEY from "../api_key";
+import API_KEY from "../statistical/api_key";
 
 export async function GET(req: any) {
   const requestHeaders = new Headers(req.headers);

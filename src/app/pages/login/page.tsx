@@ -19,7 +19,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      window.location.replace("/admin/pages/category");
+      window.location.replace("/admin/pages/dashboard");
     }
   }, [token]);
 
@@ -31,7 +31,7 @@ const Login = () => {
     }
     if (res.meta.requestStatus === "fulfilled") {
       setCookie("username", data.UserName);
-      window.location.replace("/admin/pages/category");
+      window.location.replace("/admin/pages/dashboard");
     }
   };
 
@@ -113,9 +113,8 @@ const Login = () => {
                 </span>
                 <input
                   type="text"
-                  className={`form-control${
-                    loginFailed ? " input-failed" : ""
-                  }`}
+                  className={`form-control${loginFailed ? " input-failed" : ""
+                    }`}
                   placeholder="Tên tài khoản"
                   value={data.UserName}
                   onChange={(e) =>
@@ -134,9 +133,8 @@ const Login = () => {
                 </span>
                 <input
                   type="password"
-                  className={`form-control${
-                    loginFailed ? " input-failed" : ""
-                  }`}
+                  className={`form-control${loginFailed ? " input-failed" : ""
+                    }`}
                   placeholder="Mật khẩu"
                   value={data.PasswordHash}
                   onChange={(e) =>

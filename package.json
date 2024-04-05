@@ -23,6 +23,7 @@
     "@types/react-dom": "18.2.4",
     "apexcharts": "3.41.0",
     "axios": "^1.6.2",
+    "chart.js": "2.9.3",
     "cloudinary": "^2.0.1",
     "cloudinary-core": "^2.13.0",
     "cookies-next": "^4.1.0",
@@ -54,6 +55,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/chart.js": "^2.9.41",
     "@types/crypto-js": "^4.2.2",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/lodash": "^4.14.194",
