@@ -20,6 +20,8 @@ console.log("wtf",response.data);
 
     return response.data;
   } catch (error: any) {
+
+    console.log("error " , error);
     throw error.response?.data || error.message;
   }
 });
