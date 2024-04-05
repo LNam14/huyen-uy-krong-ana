@@ -6,7 +6,7 @@ import moment from 'moment';
 const LineComponent = ({
     data,
 }: {
-    data: any;
+    data: number[];
 }) => {
     const LineRef = useRef<HTMLCanvasElement>(null);
 

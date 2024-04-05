@@ -8,8 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
-import ChartComponent from "../../components/chart/page";
-import CardLineChart from "../../components/line/page";
+import ChartComponent from "../../components/chart/chart";
+import CardLineChart from "../../components/line/line";
 import BaseCard from "../../components/shared/BaseCard";
 import "./page.css"
 interface LooseObject {
