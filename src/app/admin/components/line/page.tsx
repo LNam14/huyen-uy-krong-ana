@@ -6,8 +6,7 @@ import moment from 'moment';
 interface LineComponentProps {
     data: number[]; // Định nghĩa kiểu dữ liệu cho tham số data
 }
-
-const LineComponent: React.FC<LineComponentProps> = ({ data }) => {
+export default function LineComponent({ data }: LineComponentProps) {
     const LineRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -54,5 +53,3 @@ const LineComponent: React.FC<LineComponentProps> = ({ data }) => {
 
     return <canvas ref={LineRef} />;
 };
-
-export default LineComponent;

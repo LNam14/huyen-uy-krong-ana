@@ -7,7 +7,7 @@ interface ChartComponentProps {
     data: number[]; // Định nghĩa kiểu dữ liệu cho tham số data
 }
 
-const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
+export default function ChartComponent({ data }: ChartComponentProps) {
     const chartRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -60,4 +60,3 @@ const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
     return <canvas ref={chartRef} />;
 };
 
-export default ChartComponent;
