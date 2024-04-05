@@ -6,7 +6,7 @@ import moment from 'moment';
 const ChartComponent = ({
     data,
 }: {
-    data: number[];
+    data: any;
 }) => {
     const chartRef = useRef<HTMLCanvasElement>(null);
 
