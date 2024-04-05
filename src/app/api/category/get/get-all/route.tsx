@@ -15,6 +15,9 @@ export async function GET(req: any) {
       CreateDate: new Date(item.CreateDate).toLocaleString("vi-VN", {
         timeZone: "Asia/Ho_Chi_Minh",
       }),
+      LastUpdate: new Date(item.LastUpdate).toLocaleString("vi-VN", {
+        timeZone: "Asia/Ho_Chi_Minh",
+      }),
     }));
 
     return new Response(JSON.stringify(formattedResult), { status: 200 });

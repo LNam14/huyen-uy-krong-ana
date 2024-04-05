@@ -88,25 +88,31 @@ const UpdateCategory = ({
     );
   };
   const handleSave = async () => {
-    const categoryName = dataSub.TenDanhMuc.trim();
+    if (dataSub.TenDanhMuc) {
+      const categoryName = dataSub.TenDanhMuc.trim();
 
-    if (categoryName === "") {
-      return;
-    }
+      if (categoryName === "") {
+        return;
+      }
 
-    if (isCategoryExists(categoryName)) {
-      alert("Danh mục này đã tồn tại!");
-    } else {
-      await dispatch(createCategorySub({ dataSub }));
-      setIsNews(false);
-      setDataSub({
-        TenDanhMuc: ""
-      })
-      await dispatch(updateCategory(data));
-      await dispatch(getCategory());
-      // Đóng form
-      closeForm();
+      if (isCategoryExists(categoryName)) {
+        alert("Danh mục này đã tồn tại!");
+      } else {
+        await dispatch(createCategorySub({ dataSub }));
+        setIsNews(false);
+        setDataSub({
+          TenDanhMuc: ""
+        })
+        await dispatch(updateCategory(data));
+        await dispatch(getCategory());
+        // Đóng form
+        closeForm()
+      }
     }
+    await dispatch(updateCategory(data));
+    await dispatch(getCategory());
+    closeForm()
+
   };
 
   const handleDelete = async (ID: any) => {
@@ -116,6 +122,7 @@ const UpdateCategory = ({
 
     if (isConfirmed) {
       await dispatch(deleteCategorySub({ ID }));
+      await dispatch(updateCategory(data));
       await dispatch(getCategory());
       closeForm()
     }

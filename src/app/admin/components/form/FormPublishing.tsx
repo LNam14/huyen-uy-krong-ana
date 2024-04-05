@@ -10,7 +10,7 @@ import {
   getNewsWait,
   updateNews,
 } from "@/app/redux-store/news/slice";
-
+import "./wfa.css"
 interface LooseObject {
   [key: string]: any;
 }
@@ -68,105 +68,53 @@ const FormWFA = ({
 
   return (
     <Modal open={open} onClose={closeForm}>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "55%",
-          transform: "translate(-50%, -50%)",
-          width: "55%",
-          bgcolor: "background.paper",
-          boxShadow: 24,
-          p: 4,
-          borderRadius: 5,
-          overflowY: "auto",
-          maxHeight: "80vh",
-        }}
-      >
-
-        <Typography
-          sx={{
-            fontSize: 22,
-            fontWeight: "bold",
-            borderBottom: "2px solid #d9d9d9",
-            marginBottom: 1,
-            marginLeft: 0.2,
-            fontFamily: "Times New Roman, sans-serif",
-          }}
-        >
+      <Box className="box-container">
+        <Typography className="title">
           {data.TenDanhMuc.toUpperCase()}
         </Typography>
-        <Typography
-          sx={{
-            fontSize: 20,
-            fontWeight: "bold",
-            color: "#010457",
-            fontFamily: "Times New Roman, sans-serif",
-          }}
-        >
+        <Typography className="main-heading">
           {data.TieuDeChinh}
         </Typography>
         <Box display={"flex"} padding={1}>
-          <Typography
-            sx={{
-              fontSize: 16,
-              fontWeight: "400",
-              color: "grey",
-              display: "flex",
-              alignItems: "center",
-              fontFamily: "Times New Roman, sans-serif",
-            }}
-          >
+          <Typography className="date-info">
             {data.createDate} | {data.createBy}
           </Typography>
         </Box>
-
-        <Typography
-          sx={{
-            fontSize: 16,
-            fontWeight: "600",
-            fontStyle: "italic",
-            fontFamily: "Times New Roman, sans-serif",
-          }}
-        >
+        <Typography className="additional-title">
           {data.TieuDePhu}
         </Typography>
         <Typography
-          className="ql-align-center"
-          sx={{ fontFamily: "Times New Roman, sans-serif" }}
+          className="content ql-align-center"
           dangerouslySetInnerHTML={{ __html: data.NoiDung }}
         />
-        <Typography
-          sx={{
-            fontSize: 16,
-            textAlign: "right",
-            fontFamily: "Times New Roman, sans-serif",
-          }}
-        >
+        <Typography className="footer">
           {data.createBy}
         </Typography>
-        <Typography
-          sx={{
-            fontSize: 16,
-            textAlign: "left",
-            fontFamily: "Times New Roman, sans-serif",
-          }}
-        >
+        <Typography className="viewers">
           Lượt người xem: {data.LuotXem}
         </Typography>
-        <Box display={"flex"} justifyContent={"space-between"} marginTop={2}>
+        <Box className="button-container">
+          <Box>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => handleAction("Đã gỡ")}
+              className="button"
+            >
+              Gỡ bài
+            </Button>
+          </Box>
           <Button
             variant="contained"
             color="success"
-            onClick={() => handleAction("Đã gỡ")}
+            onClick={closeForm}
+            className="button"
           >
-            Gỡ bài
-          </Button>
-          <Button variant="contained" color="success" onClick={closeForm}>
             Đóng
           </Button>
         </Box>
       </Box>
+
     </Modal>
   );
 };

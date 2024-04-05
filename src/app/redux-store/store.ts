@@ -11,6 +11,7 @@ import rightReducer from "./right/slice";
 import topReducer from "./top/slice";
 import viewReducer from "./update-view/slice";
 import menuReducer from "./menu/slice";
+import statisticalReducer from "./statistical/slice"
 export const store = configureStore({
   reducer: {
     loginState: loginReducer,
@@ -25,6 +26,7 @@ export const store = configureStore({
     topState: topReducer,
     viewState: viewReducer,
     menuState: menuReducer,
+    statisticalState: statisticalReducer
   },
 });
 

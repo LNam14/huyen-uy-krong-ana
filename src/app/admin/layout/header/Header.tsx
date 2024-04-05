@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   AppBar,
@@ -8,6 +8,7 @@ import {
   IconButton,
   Badge,
   Button,
+  Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
 
@@ -25,12 +26,12 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
-    boxShadow: "none",
+    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
     background: theme.palette.background.paper,
     justifyContent: "center",
     backdropFilter: "blur(4px)",
     [theme.breakpoints.up("lg")]: {
-      minHeight: "70px",
+      minHeight: "60px",
     },
   }));
   const ToolbarStyled = styled(Toolbar)(({ theme }) => ({
@@ -48,15 +49,15 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
           sx={{
             display: {
               lg: "none",
-              xs: "inline",
             },
           }}
         >
-          <IconMenu2 width="20" height="20" />
-        </IconButton>
+          <IconMenu2 width="25" height="25" />
 
+        </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} marginRight={20} direction="row" alignItems="center">
+
           <Profile />
         </Stack>
       </ToolbarStyled>

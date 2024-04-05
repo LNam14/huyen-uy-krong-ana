@@ -1,5 +1,5 @@
+import moment from 'moment';
 import excuteQuery from "@/app/db/db";
-import API_KEY from "../../api_key";
 
 export async function POST(req: any) {
   // const requestHeaders = new Headers(req.headers);
@@ -27,9 +27,10 @@ export async function POST(req: any) {
     }
 
     // Perform the update only if the name doesn't exist
+    const currentDate = moment().format('YYYY-MM-DD HH:mm:ss');
     const updateResult: any = await excuteQuery(
-      "UPDATE danhmuc SET TenDanhMuc = ? WHERE ID = ?",
-      [body["TenDanhMuc"], body["ID"]]
+      "UPDATE danhmuc SET TenDanhMuc = ?, LastUpDate = ? WHERE ID = ?",
+      [body["TenDanhMuc"], currentDate, body["ID"]]
     );
 
     if (updateResult.affectedRows > 0) {

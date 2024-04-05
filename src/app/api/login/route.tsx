@@ -1,5 +1,5 @@
 import excuteQuery from "../../db/db";
-import API_KEY from "../api_key";
+import API_KEY from "../statistical/api_key";
 import jwt from "jsonwebtoken";
 
 export async function POST(req: any) {

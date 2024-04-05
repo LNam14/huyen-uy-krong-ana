@@ -1,5 +1,5 @@
 import React from "react";
-// mui imports
+// MUI imports
 import {
   ListItemIcon,
   ListItem,
@@ -7,9 +7,11 @@ import {
   styled,
   ListItemText,
   useTheme,
+  Collapse,
   ListItemButton,
 } from "@mui/material";
 import Link from "next/link";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 type NavGroup = {
   [x: string]: any;
@@ -19,7 +21,8 @@ type NavGroup = {
   title?: string;
   icon?: any;
   href?: any;
-  onClick?: React.MouseEvent<HTMLButtonElement, MouseEvent>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children?: NavGroup[];
 };
 
 interface ItemType {
@@ -34,58 +37,92 @@ const NavItem = ({ item, level, pathDirect, onClick }: ItemType) => {
   const Icon = item.icon;
   const theme = useTheme();
   const itemIcon = <Icon stroke={1.5} size="1.3rem" />;
+  const [open, setOpen] = React.useState(false);
 
   const ListItemStyled = styled(ListItem)(() => ({
     padding: 0,
     ".MuiButtonBase-root": {
       whiteSpace: "nowrap",
-      marginBottom: "7px",
-      padding: "5px 10px",
+      marginBottom: "8px",
+      padding: "8px 10px",
       borderRadius: "8px",
-      backgroundColor: level > 1 ? "transparent !important" : "#dedede",
+      backgroundColor: level > 1 ? "transparent !important" : "inherit",
       color: theme.palette.text.secondary,
       paddingLeft: "10px",
       "&:hover": {
-        backgroundColor: "#b5b1b1",
-        color: theme.palette.text.secondary,
+        backgroundColor: "#e8e8e8",
+        color: "#570000",
       },
       "&.Mui-selected": {
         color: "white",
         backgroundColor: "#570000",
         "&:hover": {
-          backgroundColor: "#570000",
+          backgroundColor: "#450101",
           color: "white",
         },
       },
     },
   }));
 
+  const handleItemClick = () => {
+    setOpen(!open);
+    localStorage.setItem('title', item.title || '');
+  };
+
   return (
-    <List component="div" disablePadding key={item.id}>
-      <ListItemStyled>
-        <ListItemButton
-          component={Link}
-          href={item.href}
-          disabled={item.disabled}
-          selected={pathDirect === item.href}
-          target={item.external ? "_blank" : ""}
-          onClick={onClick}
-        >
-          <ListItemIcon
-            sx={{
-              minWidth: "36px",
-              p: "3px 0",
-              color: "inherit",
-            }}
+    <>
+      <List component="div" disablePadding key={item.id}>
+        <ListItemStyled>
+          <ListItemButton
+            component={Link}
+            href={item.href}
+            disabled={item.disabled}
+            selected={pathDirect === item.href}
+            target={item.external ? "_blank" : ""}
+            onClick={handleItemClick}
           >
-            {itemIcon}
-          </ListItemIcon>
-          <ListItemText>
-            <>{item.title}</>
-          </ListItemText>
-        </ListItemButton>
-      </ListItemStyled>
-    </List>
+            <ListItemIcon
+              sx={{
+                minWidth: "36px",
+                p: "3px 0",
+                color: "inherit",
+              }}
+            >
+              {itemIcon}
+            </ListItemIcon>
+            <ListItemText>
+              <>{item.title}</>
+            </ListItemText>
+            {item.children && (
+              <ListItemIcon
+                sx={{
+                  minWidth: "36px",
+                  p: "3px 0",
+                  color: "inherit",
+                }}
+              >
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItemIcon>
+            )}
+          </ListItemButton>
+        </ListItemStyled>
+      </List>
+      {item.children && (
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {item.children.map((child) => (
+              <NavItem
+                key={child.id}
+                item={child}
+                level={level + 1}
+                pathDirect={pathDirect}
+                onClick={onClick}
+              />
+            ))}
+          </List>
+        </Collapse>
+      )}
+    </>
   );
 };
 

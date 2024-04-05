@@ -1,5 +1,5 @@
 import excuteQuery from "@/app/db/db";
-import API_KEY from "../../../api_key";
+import API_KEY from "../../../statistical/api_key";
 
 export async function POST(req: any) {
   try {

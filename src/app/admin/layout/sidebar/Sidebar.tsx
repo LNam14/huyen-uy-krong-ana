@@ -1,4 +1,7 @@
-import { useMediaQuery, Box, Drawer } from "@mui/material";
+import React, { useState } from "react";
+import { useMediaQuery, Box, Drawer, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 import Logo from "../shared/logo/Logo";
 import SidebarItems from "./SidebarItems";
 
@@ -14,47 +17,47 @@ const Sidebar = ({
   isSidebarOpen,
 }: ItemType) => {
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up("lg"));
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const sidebarWidth = "270px";
+  const sidebarWidth = "300px";
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   if (lgUp) {
     return (
-      <Box
-        sx={{
-          width: sidebarWidth,
-          flexShrink: 0,
-        }}
-      >
+      <>
+        <IconButton
+          aria-label="open sidebar"
+          onClick={handleMenuToggle}
+          sx={{
+            position: "fixed",
+            zIndex: 1200,
+            top: 14,
+            left: 32,
+          }}
+        >
+          {isMenuOpen ? <CloseIcon /> : <MenuIcon style={{ fontSize: 30, fontWeight: "bold", color: "black" }} />}
+        </IconButton>
         <Drawer
           anchor="left"
-          open={isSidebarOpen}
-          variant="permanent"
+          open={isMenuOpen}
+          onClose={handleMenuToggle}
+          variant="temporary"
           PaperProps={{
             sx: {
               width: sidebarWidth,
-              boxSizing: "border-box",
-              border: "0",
-              boxShadow: "rgba(113, 122, 131, 0.11) 0px 7px 30px 0px",
+              boxShadow: (theme) => theme.shadows[8],
             },
           }}
         >
-          <Box
-            sx={{
-              height: "100%",
-            }}
-            py={2}
-          >
-            <Box px={2}>
-              <Logo />
-            </Box>
-            <Box>
-              <Box mt={3}>
-                <SidebarItems />
-              </Box>
-            </Box>
+          <Box px={2} py={2}>
+            <Logo />
           </Box>
+          <SidebarItems />
         </Drawer>
-      </Box>
+      </>
     );
   }
 
@@ -67,7 +70,7 @@ const Sidebar = ({
       PaperProps={{
         sx: {
           width: sidebarWidth,
-          boxShadow: (theme) => theme.shadows[8],
+          boxShadow: (theme) => theme.shadows[10],
         },
       }}
     >
