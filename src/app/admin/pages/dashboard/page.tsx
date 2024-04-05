@@ -29,8 +29,6 @@ const Dashboard = () => {
   const [statisticalListState, setStatisticalListState] = useState<StatisticalItem>(
 
   );
-  const [dataWeek, setDataWeek] = useState<any[]>([]);
-  const [dataMonth, setDataMonth] = useState<any[]>([]);
   useEffect(() => {
     const asyncCall = async () => {
       await dispatch(getStatistical());
@@ -52,21 +50,21 @@ const Dashboard = () => {
               <div className="card">
                 <Typography className="card-title">Hôm nay</Typography>
                 <div className="card-content">
-                  <Typography className="card-number" sx={{ color: "#00933D" }}>{statisticalList?.day}</Typography>
+                  <Typography className="card-number" sx={{ color: "#00933D" }}>{statisticalListState?.day}</Typography>
                   <Typography className="card-access">Bài viết</Typography>
                 </div>
               </div>
               <div className="card">
                 <Typography className="card-title" >Tuần này</Typography>
                 <div className="card-content">
-                  <Typography className="card-number" sx={{ color: "#D9281C" }}> {statisticalList?.week}</Typography>
+                  <Typography className="card-number" sx={{ color: "#D9281C" }}> {statisticalListState?.week}</Typography>
                   <Typography className="card-access">Bài viết</Typography>
                 </div>
               </div>
               <div className="card">
                 <Typography className="card-title">Tháng này</Typography>
                 <div className="card-content">
-                  <Typography className="card-number" sx={{ color: "#03C0A7" }}> {statisticalList?.last30Days}</Typography>
+                  <Typography className="card-number" sx={{ color: "#03C0A7" }}> {statisticalListState?.last30Days}</Typography>
                   <Typography className="card-access">Bài viết</Typography>
                 </div>
               </div>
@@ -75,7 +73,7 @@ const Dashboard = () => {
 
                 <div className="card-content">
                   <Typography className="card-number" sx={{ color: "#FF7900" }}>
-                    {statisticalList?.totalCount}
+                    {statisticalListState?.totalCount}
                   </Typography>
                   <Typography className="card-access">Bài viết</Typography>
                 </div>
@@ -86,21 +84,19 @@ const Dashboard = () => {
               <div className="article-section ">
                 <div className="card-view-content">
                   <Typography className="card-view-content">Bài viết trong 7 ngày qua</Typography>
-                  <ChartComponent data={statisticalList?.lastWeek} />
+                  <ChartComponent data={statisticalListState?.lastWeek} />
                 </div>
               </div>
               <div className="sidebar">
                 <div className="line">
                   <div className="card-view-content">
                     <Typography className="card-view-content">Bài viết trong 12 tháng gần nhất</Typography>
-                    <CardLineChart data={statisticalList?.month} />
+                    <CardLineChart data={statisticalListState?.month} />
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-
         </BaseCard>
       </Grid>
     </Grid >
