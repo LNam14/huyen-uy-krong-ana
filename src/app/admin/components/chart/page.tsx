@@ -1,13 +1,9 @@
-"use client"
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
+import { ChartComponentProps } from './type';
 
-interface ChartComponentProps {
-    data: number[]; // Định nghĩa kiểu dữ liệu cho tham số data
-}
-
-export default function ChartComponent({ data }: ChartComponentProps) {
+const ChartComponent: React.FC<ChartComponentProps> = ({ data }) => {
     const chartRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -60,3 +56,4 @@ export default function ChartComponent({ data }: ChartComponentProps) {
     return <canvas ref={chartRef} />;
 };
 
+export default ChartComponent;

@@ -1,12 +1,10 @@
-"use client"
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js';
 import moment from 'moment';
+import { LineComponentProps } from './type';
 
-interface LineComponentProps {
-    data: number[]; // Định nghĩa kiểu dữ liệu cho tham số data
-}
-export default function LineComponent({ data }: LineComponentProps) {
+
+const LineComponent: React.FC<LineComponentProps> = ({ data }) => {
     const LineRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -53,3 +51,5 @@ export default function LineComponent({ data }: LineComponentProps) {
 
     return <canvas ref={LineRef} />;
 };
+
+export default LineComponent;
