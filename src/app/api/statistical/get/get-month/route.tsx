@@ -6,27 +6,27 @@ export async function GET(req: any) {
 
     try {
 
-        const days30 = [];
-        for (let i = 0; i < 30; i++) {
-            const dayStart = moment().subtract(i, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss');
-            days30.push(dayStart);
+        const months = [];
+        for (let i = 0; i < 12; i++) {
+            const monthStart = moment().subtract(i, 'months').startOf('month').format('YYYY-MM-DD HH:mm:ss');
+            const monthEnd = moment(monthStart).endOf('month').format('YYYY-MM-DD HH:mm:ss');
+            months.push({ start: monthStart, end: monthEnd });
         }
-
-        const dayCounts30Promises = days30.map(async (dayStart) => {
+        const monthCountsPromises = months.map(async (month) => {
             try {
-                const result: any = await excuteQuery("SELECT COUNT(*) AS count FROM bantin WHERE CreateDate >= ? AND CreateDate <= ?", [dayStart, moment(dayStart).endOf('day').format('YYYY-MM-DD HH:mm:ss')]);
+                const result: any = await excuteQuery("SELECT COUNT(*) AS count FROM bantin WHERE CreateDate >= ? AND CreateDate <= ?", [month.start, month.end]);
                 return result[0].count;
             } catch (error) {
-                console.error("Error counting posts for day", dayStart, error);
+                console.error("Error counting posts for month", month.start, error);
                 return 0;
             }
         });
 
-        const dayCounts30 = await Promise.all(dayCounts30Promises);
-        const totalLast30DaysPosts = dayCounts30.reduce((sum, count) => sum + count, 0);
+        const monthCounts = await Promise.all(monthCountsPromises);
+
 
         return new Response(JSON.stringify({
-            last30Days: totalLast30DaysPosts,
+            month: monthCounts,
         }), { status: 200 });
 
     } catch (error) {

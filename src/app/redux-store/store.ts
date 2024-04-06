@@ -12,6 +12,7 @@ import topReducer from "./top/slice";
 import viewReducer from "./update-view/slice";
 import menuReducer from "./menu/slice";
 import statisticalReducer from "./statistical/slice"
+import monthReducer from "./statistical/get-30days/slice"
 export const store = configureStore({
   reducer: {
     loginState: loginReducer,
@@ -26,7 +27,8 @@ export const store = configureStore({
     topState: topReducer,
     viewState: viewReducer,
     menuState: menuReducer,
-    statisticalState: statisticalReducer
+    statisticalState: statisticalReducer,
+    monthState: monthReducer,
   },
 });
 

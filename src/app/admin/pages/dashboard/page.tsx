@@ -1,5 +1,6 @@
 "use client"
 import { useAppDispatch, useAppSelector } from "@/app/redux-store/hook";
+import { getMonth, getMonthList } from "@/app/redux-store/statistical/get-30days/slice";
 import { getStatistical, getStatisticalList } from "@/app/redux-store/statistical/slice";
 import {
   Box,
@@ -26,20 +27,14 @@ interface StatisticalItem {
 const Dashboard = () => {
   const dispatch = useAppDispatch();
   const statisticalList: StatisticalItem = useAppSelector(getStatisticalList);
-  const [statisticalListState, setStatisticalListState] = useState<StatisticalItem>(
-
-  );
+  const monthlList: StatisticalItem = useAppSelector(getMonthList);
   useEffect(() => {
     const asyncCall = async () => {
       await dispatch(getStatistical());
+      await dispatch(getMonth());
     };
     asyncCall();
   }, []);
-  useEffect(() => {
-    if (statisticalList) {
-      setStatisticalListState(statisticalList);
-    }
-  }, [statisticalList]);
 
   return (
     <Grid container spacing={0}>
@@ -91,7 +86,7 @@ const Dashboard = () => {
                 <div className="line">
                   <div className="card-view-content">
                     <Typography className="card-view-content">Bài viết trong 12 tháng gần nhất</Typography>
-                    <CardLineChart data={statisticalList?.month} />
+                    <CardLineChart data={monthlList?.month} />
                   </div>
                 </div>
               </div>

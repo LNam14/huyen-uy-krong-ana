@@ -16,7 +16,6 @@ const ChartComponent = ({ data }: Props) => {
                 const labels = [];
                 for (let i = 0; i < 7; i++) {
                     labels.unshift(moment().subtract(i, 'days').format('DD-MM'));
-                    console.log("label", labels);
 
                 }
                 labels.reverse();

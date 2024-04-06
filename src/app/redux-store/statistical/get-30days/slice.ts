@@ -1,21 +1,23 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 import axios from "axios";
 interface AuthenticationState {
-  statisticalList: any;
+  monthList: any;
   originList: any;
   status: "idle" | "loading" | "failed" | "succeeded";
 }
 
 const initialState: AuthenticationState = {
-  statisticalList: null,
+  monthList: null,
   originList: null,
   status: "idle",
 };
 
-export const getStatistical = createAsyncThunk("statistical/get", async () => {
+export const getMonth = createAsyncThunk("month/get", async () => {
   try {
-    const response = await axios.get("/api/statistical/get");
+    const response = await axios.get("/api/month/get/get-month");
+console.log("wtf",response.data);
+
     return response.data;
   } catch (error: any) {
 
@@ -23,27 +25,27 @@ export const getStatistical = createAsyncThunk("statistical/get", async () => {
     throw error.response?.data || error.message;
   }
 });
-export const StatisticalSlice = createSlice({
+export const monthSlice = createSlice({
   name: "news",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getStatistical.pending, (state) => {
+      .addCase(getMonth.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getStatistical.fulfilled, (state, action) => {
+      .addCase(getMonth.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.statisticalList = action.payload;
+        state.monthList = action.payload;
         state.originList = action.payload;
       })
-      .addCase(getStatistical.rejected, (state, action) => {
+      .addCase(getMonth.rejected, (state, action) => {
         state.status = "failed";
-        state.statisticalList = null;
+        state.monthList = null;
         state.originList = null;
       });
   },
 });
 
-export const getStatisticalList = (state: RootState) => state.statisticalState.statisticalList;
-export default StatisticalSlice.reducer;
+export const getMonthList = (state: RootState) => state.monthState.monthList;
+export default monthSlice.reducer;
