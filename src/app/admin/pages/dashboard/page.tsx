@@ -86,7 +86,7 @@ const Dashboard = () => {
                 <div className="line">
                   <div className="card-view-content">
                     <Typography className="card-view-content">Bài viết trong 12 tháng gần nhất</Typography>
-                    <CardLineChart data={monthlList?.month} />
+                    <CardLineChart data={statisticalList?.month} />
                   </div>
                 </div>
               </div>

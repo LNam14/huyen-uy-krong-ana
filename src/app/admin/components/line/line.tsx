@@ -13,7 +13,7 @@ const LineComponent = ({ data }: Props) => {
         if (LineRef.current) {
             const ctx = LineRef.current.getContext('2d');
             if (ctx) {
-                const labels = Array.from({ length: 12 }, (_, i) =>
+                const labels = Array.from({ length: 7 }, (_, i) =>
                     moment().subtract(11 - i, 'months').format('MM-YYYY')
                 );
                 labels.reverse();

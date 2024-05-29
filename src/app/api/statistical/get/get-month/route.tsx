@@ -7,7 +7,7 @@ export async function GET(req: any) {
     try {
 
         const months = [];
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 7; i++) {
             const monthStart = moment().subtract(i, 'months').startOf('month').format('YYYY-MM-DD HH:mm:ss');
             const monthEnd = moment(monthStart).endOf('month').format('YYYY-MM-DD HH:mm:ss');
             months.push({ start: monthStart, end: monthEnd });
@@ -17,11 +17,10 @@ export async function GET(req: any) {
                 const result: any = await excuteQuery("SELECT COUNT(*) AS count FROM bantin WHERE CreateDate >= ? AND CreateDate <= ?", [month.start, month.end]);
                 return result[0].count;
             } catch (error) {
-                console.error("Error counting posts for month", month.start, error);
+                console.error("Error counting posts for day", month, error);
                 return 0;
             }
         });
-
         const monthCounts = await Promise.all(monthCountsPromises);
 
 
