@@ -191,16 +191,16 @@ const Home = () => {
       <body className="mas-portal v2">
         <header>
           <div className="logo-reponsive">
-            {logoListState &&
-              logoListState.map((item: LogoItem, index: number) => (
+            <div className="logo-reponsive">
+              {logoListState ? logoListState.map((item: LogoItem, index: number) => (
                 <img
                   className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
-                  key={index}
-
                   src={item.image}
-
+                  key={index}
                 />
-              ))}
+              )) : null}
+            </div>
+
           </div>
           <nav
             id="lv-navbar"
@@ -211,7 +211,7 @@ const Home = () => {
               <div className="portal-banner">
                 <div className="hidden-xs">
                   <a className="logoPortal" style={{ display: "flex" }}>
-                    {logoListState &&
+                    {logoListState ?
                       logoListState.map((item: LogoItem, index: number) => (
                         <img
                           className={`img-logo-hi ${index === 0 ? 'img-logo-hi-100' : 'img-logo-hi-80'}`}
@@ -220,7 +220,7 @@ const Home = () => {
                           src={item.image}
 
                         />
-                      ))}
+                      )) : null}
                   </a>
                 </div>
               </div>
